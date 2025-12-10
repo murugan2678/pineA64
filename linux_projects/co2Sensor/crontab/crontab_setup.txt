@@ -1,0 +1,33 @@
+murugan@linux:~$ ssh zedbee@192.168.0.136
+zedbee@192.168.0.136's password: 
+Permission denied, please try again.
+zedbee@192.168.0.136's password: 
+    _             _    _           
+   /_\  _ _ _ __ | |__(_)__ _ _ _  
+  / _ \| '_| '  \| '_ \ / _` | ' \ 
+ /_/ \_\_| |_|_|_|_.__/_\__,_|_||_|
+                                   
+ v25.8.1 for Pine64 running Armbian Linux 6.12.35-current-sunxi64
+
+ Packages:     Debian stable (bookworm), possible distro upgrade (trixie)
+ Updates:      Kernel upgrade enabled and 65 packages available for upgrade 
+ IPv4:         (LAN) 192.168.0.136 (WAN) 210.18.133.225 
+
+ Performance:  
+
+ Load:         2%           	 Uptime:       17 min	
+ Memory usage: 13% of 971M   	
+ CPU temp:     31°C           	 Usage of /:   4% of 57G    	
+
+ Commands: 
+
+ Upgrade    : armbian-upgrade
+ Monitoring : htop
+
+zedbee@pine64:~$ 
+zedbee@pine64:~$ 
+zedbee@pine64:~$ ls
+co2_sen  log  service
+
+zedbee@pine64:/usr/local/bin$ ls
+all_device_service.sh

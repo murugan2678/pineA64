@@ -1,0 +1,30 @@
+[Thu Sep 11 17:44:30 2025] CO2 client thread is active. Current time: Thu Sep 11 17:44:30 2025
+
+[Thu Sep 11 17:44:49 2025] CO2 (index 1): raw = 0, ppm = 0.00, scaled_ppm = 0, write to server register[0]
+[Thu Sep 11 17:44:49 2025] CO2 (index 2): raw = 2233, ppm = 1090.60, scaled_ppm = 1090, write to server register[10]
+[Thu Sep 11 17:44:49 2025] CO2 : reg[5] = 0
+
+[Thu Sep 11 17:44:49 2025] CO2 : reg[6] = 0
+
+[Thu Sep 11 17:44:49 2025] CO2 : reg[7] = 0
+
+[Thu Sep 11 17:44:49 2025] CO2 : reg1[5] = 0
+
+[Thu Sep 11 17:44:49 2025] CO2 : reg1[6] = 0
+
+[Thu Sep 11 17:44:49 2025] CO2 : reg1[7] = 0
+
+[Thu Sep 11 17:54:54 2025] CO2 (index 1): raw = 0, ppm = 0.00, scaled_ppm = 0, write to server register[0]
+[Thu Sep 11 17:54:54 2025] CO2 (index 2): raw = 2190, ppm = 1069.60, scaled_ppm = 1069, write to server register[10]
+[Thu Sep 11 17:54:54 2025] CO2 : reg[5] = 0
+
+[Thu Sep 11 17:54:54 2025] CO2 : reg[6] = 0
+
+[Thu Sep 11 17:54:54 2025] CO2 : reg[7] = 0
+
+[Thu Sep 11 17:54:54 2025] CO2 : reg1[5] = 0
+
+[Thu Sep 11 17:54:54 2025] CO2 : reg1[6] = 0
+
+[Thu Sep 11 17:54:54 2025] CO2 : reg1[7] = 0
+

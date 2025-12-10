@@ -1,0 +1,1840 @@
+zedbee@pine64:~/co2_sen$ =======> ls
+
+a.out        co2_client_bac.c     co2_sen_renu    data_mqtt_pub_output.txt  km_co2.cy             main_muruga.c      mqtt2.c            mqtt_store_data.txt  sam_main.c
+auto_garb.c  co2_client.c         config2.c       error.bin                 km.txt                main_murugan_uk.c  mqtt.c             mqtt_yest.c          sam_server.c
+boodskap.c   co2_client.h         config.c        fine_publish              log                   main.o             mqtt.h             open_tx.c            server.c
+boodskap.h   co2_client_ma_bac.c  config.h        jsonify.c                 log_publish_data.txt  main_server.c      mqtt_ms.c          output.txt           server.h
+boodskap.o   co2_client_mur.c     config.o        jsonify.h                 main.c                Makefile           mqtt_murugan.c     publish_data.txt     server_mur.c
+cli.c        co2_client.o         configurations  jsonify.o                 main_co2_client.c     ma_server.c        mqtt_murugan_uk.c  sam                  server.o
+clien_co2.c  co2_clie_rag.c       data.h          km_co2.c                  main_ms.c             mqtt1.c            mqtt.o             sam_co2_clin.c
+
+zedbee@pine64:~/co2_sen$ =======> make clean
+
+rm -f main.o config.o server.o co2_client.o mqtt.o jsonify.o boodskap.o co2_sen_renu
+
+
+zedbee@pine64:~/co2_sen$ =======> make
+
+gcc -Wall -g -I. -c main.c -o main.o
+gcc -Wall -g -I. -c config.c -o config.o
+gcc -Wall -g -I. -c server.c -o server.o
+gcc -Wall -g -I. -c co2_client.c -o co2_client.o
+co2_client.c: In function ‘co2_client_thread’:
+co2_client.c:234:39: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘uint16_t *’ {aka ‘short unsigned int *’} [-Wformat=]
+  234 |         printf("success current_reg :%d\n", current_reg);
+      |                                      ~^     ~~~~~~~~~~~
+      |                                       |     |
+      |                                       int   uint16_t * {aka short unsigned int *}
+      |                                      %hn
+gcc -Wall -g -I. -c mqtt.c -o mqtt.o
+gcc -Wall -g -I. -c jsonify.c -o jsonify.o
+gcc -Wall -g -I. -c boodskap.c -o boodskap.o
+gcc main.o config.o server.o co2_client.o mqtt.o jsonify.o boodskap.o -o co2_sen_renu -lmodbus -lpaho-mqtt3c -lcjson -pthread -lm
+
+
+
+
+zedbee@pine64:~/co2_sen$ =======> ./co2_sen_renu
+total devices : 2
+
+
+MQTT thread started
+Connected to client first device
+Connected to client second device
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2007, ppm1 = 2450.55, scaled_ppm1 = 2450
+CO2 : raw2 = 2375, ppm2 = 58.00, scaled_ppm2 = 57
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2450, 57, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1979, ppm11 = 2416.36, scaled_ppm11 = 2416
+CO2 : raw12 = 3356, ppm12 = 81.95, scaled_ppm12 = 81
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2416, 81, 0, 0]
+
+
+MQTT connection success
+Attempting to forward stored messages
+open the temp file success **********
+
+MQTT thread loop iteration
+main.c mqtt send data buffer reg[0] = 0
+main.c mqtt send data buffer reg[1] = 2450
+main.c mqtt send data buffer reg[2] = 57
+main.c mqtt send data buffer reg[3] = 0
+main.c mqtt send data buffer reg[4] = 0
+main.c mqtt send data buffer reg[5] = 0
+main.c mqtt send data buffer reg[6] = 0
+main.c mqtt send data buffer reg[7] = 0
+main.c mqtt send data buffer reg[8] = 0
+main.c mqtt send data buffer reg[9] = 0
+main.c mqtt send data buffer reg[10] = 1048
+main.c mqtt send data buffer reg[11] = 2416
+main.c mqtt send data buffer reg[12] = 81
+main.c mqtt send data buffer reg[13] = 0
+main.c mqtt send data buffer reg[14] = 0
+main.c mqtt send data buffer reg[15] = 0
+main.c mqtt send data buffer reg[16] = 0
+main.c mqtt send data buffer reg[17] = 0
+main.c mqtt send data buffer reg[18] = 0
+main.c mqtt send data buffer reg[19] = 0
+
+
+
+
+Published to topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758622633000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"24.50","hum":"57","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"1048","temp":"24.16","hum":"81","pmtwofive":"0","pmten":"0"}]}
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2007, ppm1 = 2450.55, scaled_ppm1 = 2450
+CO2 : raw2 = 2378, ppm2 = 58.07, scaled_ppm2 = 58
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2450, 58, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1980, ppm11 = 2417.58, scaled_ppm11 = 2417
+CO2 : raw12 = 3360, ppm12 = 82.05, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2417, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2006, ppm1 = 2449.33, scaled_ppm1 = 2449
+CO2 : raw2 = 2378, ppm2 = 58.07, scaled_ppm2 = 58
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2449, 58, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1980, ppm11 = 2417.58, scaled_ppm11 = 2417
+CO2 : raw12 = 3364, ppm12 = 82.15, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2417, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2006, ppm1 = 2449.33, scaled_ppm1 = 2449
+CO2 : raw2 = 2381, ppm2 = 58.14, scaled_ppm2 = 58
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2449, 58, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1980, ppm11 = 2417.58, scaled_ppm11 = 2417
+CO2 : raw12 = 3364, ppm12 = 82.15, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2417, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2006, ppm1 = 2449.33, scaled_ppm1 = 2449
+CO2 : raw2 = 2382, ppm2 = 58.17, scaled_ppm2 = 58
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2449, 58, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1980, ppm11 = 2417.58, scaled_ppm11 = 2417
+CO2 : raw12 = 3364, ppm12 = 82.15, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2417, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2005, ppm1 = 2448.11, scaled_ppm1 = 2448
+CO2 : raw2 = 2387, ppm2 = 58.29, scaled_ppm2 = 58
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2448, 58, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1980, ppm11 = 2417.58, scaled_ppm11 = 2417
+CO2 : raw12 = 3365, ppm12 = 82.17, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2417, 82, 0, 0]
+
+
+CO2 client thread is active at Tue Sep 23 15:47:44 2025
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2006, ppm1 = 2449.33, scaled_ppm1 = 2449
+CO2 : raw2 = 2384, ppm2 = 58.22, scaled_ppm2 = 58
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2449, 58, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2145, ppm10 = 1047.62, scaled_ppm10 = 1047
+CO2 : raw11 = 1980, ppm11 = 2417.58, scaled_ppm11 = 2417
+CO2 : raw12 = 3369, ppm12 = 82.27, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1047, 2417, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2005, ppm1 = 2448.11, scaled_ppm1 = 2448
+CO2 : raw2 = 2386, ppm2 = 58.27, scaled_ppm2 = 58
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2448, 58, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1980, ppm11 = 2417.58, scaled_ppm11 = 2417
+CO2 : raw12 = 3368, ppm12 = 82.25, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2417, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2005, ppm1 = 2448.11, scaled_ppm1 = 2448
+CO2 : raw2 = 2390, ppm2 = 58.36, scaled_ppm2 = 58
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2448, 58, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3369, ppm12 = 82.27, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2422, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2005, ppm1 = 2448.11, scaled_ppm1 = 2448
+CO2 : raw2 = 2390, ppm2 = 58.36, scaled_ppm2 = 58
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2448, 58, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1980, ppm11 = 2417.58, scaled_ppm11 = 2417
+CO2 : raw12 = 3369, ppm12 = 82.27, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2417, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2005, ppm1 = 2448.11, scaled_ppm1 = 2448
+CO2 : raw2 = 2391, ppm2 = 58.39, scaled_ppm2 = 58
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2448, 58, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3373, ppm12 = 82.37, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2422, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2005, ppm1 = 2448.11, scaled_ppm1 = 2448
+CO2 : raw2 = 2394, ppm2 = 58.46, scaled_ppm2 = 58
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2448, 58, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3374, ppm12 = 82.39, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2422, 82, 0, 0]
+
+
+CO2 client thread is active at Tue Sep 23 15:48:15 2025
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2005, ppm1 = 2448.11, scaled_ppm1 = 2448
+CO2 : raw2 = 2396, ppm2 = 58.51, scaled_ppm2 = 58
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2448, 58, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3374, ppm12 = 82.39, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2422, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2006, ppm1 = 2449.33, scaled_ppm1 = 2449
+CO2 : raw2 = 2400, ppm2 = 58.61, scaled_ppm2 = 58
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2449, 58, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1980, ppm11 = 2417.58, scaled_ppm11 = 2417
+CO2 : raw12 = 3373, ppm12 = 82.37, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2417, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2005, ppm1 = 2448.11, scaled_ppm1 = 2448
+CO2 : raw2 = 2401, ppm2 = 58.63, scaled_ppm2 = 58
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2448, 58, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3373, ppm12 = 82.37, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2422, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2007, ppm1 = 2450.55, scaled_ppm1 = 2450
+CO2 : raw2 = 2404, ppm2 = 58.71, scaled_ppm2 = 58
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2450, 58, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1985, ppm11 = 2423.69, scaled_ppm11 = 2423
+CO2 : raw12 = 3373, ppm12 = 82.37, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2423, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2007, ppm1 = 2450.55, scaled_ppm1 = 2450
+CO2 : raw2 = 2407, ppm2 = 58.78, scaled_ppm2 = 58
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2450, 58, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3373, ppm12 = 82.37, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2422, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2005, ppm1 = 2448.11, scaled_ppm1 = 2448
+CO2 : raw2 = 2410, ppm2 = 58.85, scaled_ppm2 = 58
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2448, 58, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3373, ppm12 = 82.37, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2422, 82, 0, 0]
+
+
+CO2 client thread is active at Tue Sep 23 15:48:45 2025
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2007, ppm1 = 2450.55, scaled_ppm1 = 2450
+CO2 : raw2 = 2414, ppm2 = 58.95, scaled_ppm2 = 58
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2450, 58, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3373, ppm12 = 82.37, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2422, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2006, ppm1 = 2449.33, scaled_ppm1 = 2449
+CO2 : raw2 = 2420, ppm2 = 59.10, scaled_ppm2 = 59
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2449, 59, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1985, ppm11 = 2423.69, scaled_ppm11 = 2423
+CO2 : raw12 = 3373, ppm12 = 82.37, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2423, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2005, ppm1 = 2448.11, scaled_ppm1 = 2448
+CO2 : raw2 = 2422, ppm2 = 59.15, scaled_ppm2 = 59
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2448, 59, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2145, ppm10 = 1047.62, scaled_ppm10 = 1047
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3377, ppm12 = 82.47, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1047, 2422, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2007, ppm1 = 2450.55, scaled_ppm1 = 2450
+CO2 : raw2 = 2421, ppm2 = 59.12, scaled_ppm2 = 59
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2450, 59, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3377, ppm12 = 82.47, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2422, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2008, ppm1 = 2451.77, scaled_ppm1 = 2451
+CO2 : raw2 = 2420, ppm2 = 59.10, scaled_ppm2 = 59
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2451, 59, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1985, ppm11 = 2423.69, scaled_ppm11 = 2423
+CO2 : raw12 = 3378, ppm12 = 82.49, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2423, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2008, ppm1 = 2451.77, scaled_ppm1 = 2451
+CO2 : raw2 = 2421, ppm2 = 59.12, scaled_ppm2 = 59
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2451, 59, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2107, ppm10 = 1029.06, scaled_ppm10 = 1029
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3377, ppm12 = 82.47, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1029, 2422, 82, 0, 0]
+
+
+CO2 client thread is active at Tue Sep 23 15:49:16 2025
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2005, ppm1 = 2448.11, scaled_ppm1 = 2448
+CO2 : raw2 = 2422, ppm2 = 59.15, scaled_ppm2 = 59
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2448, 59, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2107, ppm10 = 1029.06, scaled_ppm10 = 1029
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3377, ppm12 = 82.47, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1029, 2422, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2009, ppm1 = 2452.99, scaled_ppm1 = 2452
+CO2 : raw2 = 2422, ppm2 = 59.15, scaled_ppm2 = 59
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2452, 59, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2107, ppm10 = 1029.06, scaled_ppm10 = 1029
+CO2 : raw11 = 1985, ppm11 = 2423.69, scaled_ppm11 = 2423
+CO2 : raw12 = 3378, ppm12 = 82.49, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1029, 2423, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2006, ppm1 = 2449.33, scaled_ppm1 = 2449
+CO2 : raw2 = 2423, ppm2 = 59.17, scaled_ppm2 = 59
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2449, 59, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2107, ppm10 = 1029.06, scaled_ppm10 = 1029
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3378, ppm12 = 82.49, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1029, 2422, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2004, ppm1 = 2446.89, scaled_ppm1 = 2446
+CO2 : raw2 = 2424, ppm2 = 59.19, scaled_ppm2 = 59
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2446, 59, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2107, ppm10 = 1029.06, scaled_ppm10 = 1029
+CO2 : raw11 = 1985, ppm11 = 2423.69, scaled_ppm11 = 2423
+CO2 : raw12 = 3378, ppm12 = 82.49, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1029, 2423, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2006, ppm1 = 2449.33, scaled_ppm1 = 2449
+CO2 : raw2 = 2425, ppm2 = 59.22, scaled_ppm2 = 59
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2449, 59, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2107, ppm10 = 1029.06, scaled_ppm10 = 1029
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3378, ppm12 = 82.49, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1029, 2422, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2007, ppm1 = 2450.55, scaled_ppm1 = 2450
+CO2 : raw2 = 2426, ppm2 = 59.24, scaled_ppm2 = 59
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2450, 59, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2107, ppm10 = 1029.06, scaled_ppm10 = 1029
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3378, ppm12 = 82.49, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1029, 2422, 82, 0, 0]
+
+
+CO2 client thread is active at Tue Sep 23 15:49:47 2025
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2007, ppm1 = 2450.55, scaled_ppm1 = 2450
+CO2 : raw2 = 2431, ppm2 = 59.37, scaled_ppm2 = 59
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2450, 59, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2107, ppm10 = 1029.06, scaled_ppm10 = 1029
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3378, ppm12 = 82.49, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1029, 2422, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2009, ppm1 = 2452.99, scaled_ppm1 = 2452
+CO2 : raw2 = 2434, ppm2 = 59.44, scaled_ppm2 = 59
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2452, 59, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2107, ppm10 = 1029.06, scaled_ppm10 = 1029
+CO2 : raw11 = 1985, ppm11 = 2423.69, scaled_ppm11 = 2423
+CO2 : raw12 = 3382, ppm12 = 82.59, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1029, 2423, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2009, ppm1 = 2452.99, scaled_ppm1 = 2452
+CO2 : raw2 = 2437, ppm2 = 59.51, scaled_ppm2 = 59
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2452, 59, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2107, ppm10 = 1029.06, scaled_ppm10 = 1029
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3382, ppm12 = 82.59, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1029, 2422, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2006, ppm1 = 2449.33, scaled_ppm1 = 2449
+CO2 : raw2 = 2441, ppm2 = 59.61, scaled_ppm2 = 59
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2449, 59, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2105, ppm10 = 1028.08, scaled_ppm10 = 1028
+CO2 : raw11 = 1983, ppm11 = 2421.25, scaled_ppm11 = 2421
+CO2 : raw12 = 3383, ppm12 = 82.61, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1028, 2421, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2006, ppm1 = 2449.33, scaled_ppm1 = 2449
+CO2 : raw2 = 2442, ppm2 = 59.63, scaled_ppm2 = 59
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2449, 59, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2107, ppm10 = 1029.06, scaled_ppm10 = 1029
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3386, ppm12 = 82.69, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1029, 2422, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2008, ppm1 = 2451.77, scaled_ppm1 = 2451
+CO2 : raw2 = 2442, ppm2 = 59.63, scaled_ppm2 = 59
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2451, 59, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3390, ppm12 = 82.78, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2422, 82, 0, 0]
+
+
+CO2 client thread is active at Tue Sep 23 15:50:17 2025
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2005, ppm1 = 2448.11, scaled_ppm1 = 2448
+CO2 : raw2 = 2448, ppm2 = 59.78, scaled_ppm2 = 59
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2448, 59, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3391, ppm12 = 82.81, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2422, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2008, ppm1 = 2451.77, scaled_ppm1 = 2451
+CO2 : raw2 = 2455, ppm2 = 59.95, scaled_ppm2 = 59
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2451, 59, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3395, ppm12 = 82.91, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2422, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2007, ppm1 = 2450.55, scaled_ppm1 = 2450
+CO2 : raw2 = 2457, ppm2 = 60.00, scaled_ppm2 = 60
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2450, 60, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2145, ppm10 = 1047.62, scaled_ppm10 = 1047
+CO2 : raw11 = 1985, ppm11 = 2423.69, scaled_ppm11 = 2423
+CO2 : raw12 = 3395, ppm12 = 82.91, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1047, 2423, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2007, ppm1 = 2450.55, scaled_ppm1 = 2450
+CO2 : raw2 = 2461, ppm2 = 60.10, scaled_ppm2 = 60
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2450, 60, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3400, ppm12 = 83.03, scaled_ppm12 = 83
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2422, 83, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2008, ppm1 = 2451.77, scaled_ppm1 = 2451
+CO2 : raw2 = 2462, ppm2 = 60.12, scaled_ppm2 = 60
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2451, 60, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1985, ppm11 = 2423.69, scaled_ppm11 = 2423
+CO2 : raw12 = 3395, ppm12 = 82.91, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2423, 82, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2005, ppm1 = 2448.11, scaled_ppm1 = 2448
+CO2 : raw2 = 2466, ppm2 = 60.22, scaled_ppm2 = 60
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2448, 60, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3395, ppm12 = 82.91, scaled_ppm12 = 82
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2422, 82, 0, 0]
+
+
+CO2 client thread is active at Tue Sep 23 15:50:49 2025
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2007, ppm1 = 2450.55, scaled_ppm1 = 2450
+CO2 : raw2 = 2467, ppm2 = 60.24, scaled_ppm2 = 60
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2450, 60, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1985, ppm11 = 2423.69, scaled_ppm11 = 2423
+CO2 : raw12 = 3400, ppm12 = 83.03, scaled_ppm12 = 83
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2423, 83, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2008, ppm1 = 2451.77, scaled_ppm1 = 2451
+CO2 : raw2 = 2472, ppm2 = 60.37, scaled_ppm2 = 60
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2451, 60, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3399, ppm12 = 83.00, scaled_ppm12 = 83
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2422, 83, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2008, ppm1 = 2451.77, scaled_ppm1 = 2451
+CO2 : raw2 = 2473, ppm2 = 60.39, scaled_ppm2 = 60
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2451, 60, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3403, ppm12 = 83.10, scaled_ppm12 = 83
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2422, 83, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2009, ppm1 = 2452.99, scaled_ppm1 = 2452
+CO2 : raw2 = 2474, ppm2 = 60.42, scaled_ppm2 = 60
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2452, 60, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2147, ppm10 = 1048.60, scaled_ppm10 = 1048
+CO2 : raw11 = 1985, ppm11 = 2423.69, scaled_ppm11 = 2423
+CO2 : raw12 = 3404, ppm12 = 83.13, scaled_ppm12 = 83
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2423, 83, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2009, ppm1 = 2452.99, scaled_ppm1 = 2452
+CO2 : raw2 = 2477, ppm2 = 60.49, scaled_ppm2 = 60
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2452, 60, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3404, ppm12 = 83.13, scaled_ppm12 = 83
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2422, 83, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2008, ppm1 = 2451.77, scaled_ppm1 = 2451
+CO2 : raw2 = 2478, ppm2 = 60.51, scaled_ppm2 = 60
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2451, 60, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1985, ppm11 = 2423.69, scaled_ppm11 = 2423
+CO2 : raw12 = 3403, ppm12 = 83.10, scaled_ppm12 = 83
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2423, 83, 0, 0]
+
+
+CO2 client thread is active at Tue Sep 23 15:51:19 2025
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2008, ppm1 = 2451.77, scaled_ppm1 = 2451
+CO2 : raw2 = 2483, ppm2 = 60.63, scaled_ppm2 = 60
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2451, 60, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3412, ppm12 = 83.32, scaled_ppm12 = 83
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2422, 83, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2008, ppm1 = 2451.77, scaled_ppm1 = 2451
+CO2 : raw2 = 2485, ppm2 = 60.68, scaled_ppm2 = 60
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2451, 60, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1985, ppm11 = 2423.69, scaled_ppm11 = 2423
+CO2 : raw12 = 3412, ppm12 = 83.32, scaled_ppm12 = 83
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2423, 83, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2007, ppm1 = 2450.55, scaled_ppm1 = 2450
+CO2 : raw2 = 2488, ppm2 = 60.76, scaled_ppm2 = 60
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2450, 60, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1984, ppm11 = 2422.47, scaled_ppm11 = 2422
+CO2 : raw12 = 3411, ppm12 = 83.30, scaled_ppm12 = 83
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2422, 83, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2009, ppm1 = 2452.99, scaled_ppm1 = 2452
+CO2 : raw2 = 2489, ppm2 = 60.78, scaled_ppm2 = 60
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2452, 60, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1985, ppm11 = 2423.69, scaled_ppm11 = 2423
+CO2 : raw12 = 3416, ppm12 = 83.42, scaled_ppm12 = 83
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2423, 83, 0, 0]
+
+
+success current_reg :-1269634880
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2007, ppm1 = 2450.55, scaled_ppm1 = 2450
+CO2 : raw2 = 2488, ppm2 = 60.76, scaled_ppm2 = 60
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2450, 60, 0, 0]
+
+
+success current_reg :-1269634896
+success num_regs :5
+CO2 : raw10 = 2146, ppm10 = 1048.11, scaled_ppm10 = 1048
+CO2 : raw11 = 1985, ppm11 = 2423.69, scaled_ppm11 = 2423
+CO2 : raw12 = 3412, ppm12 = 83.32, scaled_ppm12 = 83
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [1048, 2423, 83, 0, 0]
+
+
+^C
+zedbee@pine64:~/co2_sen$
+zedbee@pine64:~/co2_sen$
+
+
+/********************************************************** data storage and forward mqtt publish data timestamp *******************************************************************/
+
+zedbee@pine64:~/co2_sen$ make clean
+rm -f main.o config.o server.o co2_client.o mqtt.o jsonify.o boodskap.o co2_sen_renu
+zedbee@pine64:~/co2_sen$
+zedbee@pine64:~/co2_sen$ make
+gcc -Wall -g -I. -c main.c -o main.o
+gcc -Wall -g -I. -c config.c -o config.o
+gcc -Wall -g -I. -c server.c -o server.o
+gcc -Wall -g -I. -c co2_client.c -o co2_client.o
+co2_client.c: In function ‘co2_client_thread’:
+co2_client.c:234:39: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘uint16_t *’ {aka ‘short unsigned int *’} [-Wformat=]
+  234 |         printf("success current_reg :%d\n", current_reg);
+      |                                      ~^     ~~~~~~~~~~~
+      |                                       |     |
+      |                                       int   uint16_t * {aka short unsigned int *}
+      |                                      %hn
+gcc -Wall -g -I. -c mqtt.c -o mqtt.o
+gcc -Wall -g -I. -c jsonify.c -o jsonify.o
+gcc -Wall -g -I. -c boodskap.c -o boodskap.o
+gcc main.o config.o server.o co2_client.o mqtt.o jsonify.o boodskap.o -o co2_sen_renu -lmodbus -lpaho-mqtt3c -lcjson -pthread -lm
+zedbee@pine64:~/co2_sen$
+zedbee@pine64:~/co2_sen$ ./co2_sen_renu
+total devices : 2
+
+
+MQTT thread started
+Connected to client first device
+Connected to client second device
+success current_reg :-1186273088
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2078, ppm1 = 2537.24, scaled_ppm1 = 2537
+CO2 : raw2 = 2694, ppm2 = 65.79, scaled_ppm2 = 65
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2537, 65, 0, 0]
+
+
+success current_reg :-1186273104
+success num_regs :5
+CO2 Modbus read failed for device rc :-1
+success current_reg :-1186273104
+success num_regs :5
+CO2 Modbus read failed for device rc :-1
+success current_reg :-1186273104
+success num_regs :5
+CO2 Modbus read failed for device rc :-1
+CO2 Modbus reconnect failed for device
+Failed to read registers for device
+Wrote zeros to registers 10-14 due to device 2 failure
+MQTT connection success
+Attempting to forward stored messages
+open the temp file success **********
+
+*****Forwarded stored message to topic***** '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758625685000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"25.31","hum":"66","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"1089","temp":"24.90","hum":"89","pmtwofive":"0","pmten":"0"}]}
+
+*****Forwarded stored message to topic***** '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758625990000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"25.37","hum":"64","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"1090","temp":"24.95","hum":"88","pmtwofive":"0","pmten":"0"}]}
+
+*****Forwarded stored message to topic***** '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758626290000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"25.34","hum":"62","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+
+*****Forwarded stored message to topic***** '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758626590000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"25.32","hum":"62","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+
+*****Forwarded stored message to topic***** '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758626890000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"25.32","hum":"64","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+
+MQTT thread loop iteration
+main.c mqtt send data buffer reg[0] = 0
+main.c mqtt send data buffer reg[1] = 2537
+main.c mqtt send data buffer reg[2] = 65
+main.c mqtt send data buffer reg[3] = 0
+main.c mqtt send data buffer reg[4] = 0
+main.c mqtt send data buffer reg[5] = 0
+main.c mqtt send data buffer reg[6] = 0
+main.c mqtt send data buffer reg[7] = 0
+main.c mqtt send data buffer reg[8] = 0
+main.c mqtt send data buffer reg[9] = 0
+main.c mqtt send data buffer reg[10] = 0
+main.c mqtt send data buffer reg[11] = 0
+main.c mqtt send data buffer reg[12] = 0
+main.c mqtt send data buffer reg[13] = 0
+main.c mqtt send data buffer reg[14] = 0
+main.c mqtt send data buffer reg[15] = 0
+main.c mqtt send data buffer reg[16] = 0
+main.c mqtt send data buffer reg[17] = 0
+main.c mqtt send data buffer reg[18] = 0
+main.c mqtt send data buffer reg[19] = 0
+
+
+
+
+Published to topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758627181000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"25.37","hum":"65","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+success current_reg :-1186273088
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2080, ppm1 = 2539.68, scaled_ppm1 = 2539
+CO2 : raw2 = 2694, ppm2 = 65.79, scaled_ppm2 = 65
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2539, 65, 0, 0]
+
+
+Reconnected to device
+success current_reg :-1186273104
+success num_regs :5
+CO2 Modbus read failed for device rc :-1
+success current_reg :-1186273104
+success num_regs :5
+CO2 Modbus read failed for device rc :-1
+success current_reg :-1186273104
+success num_regs :5
+CO2 Modbus read failed for device rc :-1
+success current_reg :-1186273104
+success num_regs :5
+CO2 Modbus read failed for device rc :-1
+success current_reg :-1186273104
+success num_regs :5
+CO2 Modbus read failed for device rc :-1
+Failed to read registers for device
+Wrote zeros to registers 10-14 due to device 2 failure
+success current_reg :-1186273088
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2081, ppm1 = 2540.90, scaled_ppm1 = 2540
+CO2 : raw2 = 2693, ppm2 = 65.76, scaled_ppm2 = 65
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2540, 65, 0, 0]
+
+
+success current_reg :-1186273104
+success num_regs :5
+CO2 Modbus read failed for device rc :-1
+success current_reg :-1186273104
+success num_regs :5
+CO2 Modbus read failed for device rc :-1
+CO2 Modbus reconnect failed for device
+Failed to read registers for device
+Wrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Tue Sep 23 17:03:25 2025
+success current_reg :-1186273088
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2081, ppm1 = 2540.90, scaled_ppm1 = 2540
+CO2 : raw2 = 2693, ppm2 = 65.76, scaled_ppm2 = 65
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2540, 65, 0, 0]
+
+
+Reconnected to device
+success current_reg :-1186273104
+success num_regs :5
+CO2 Modbus read failed for device rc :-1
+success current_reg :-1186273104
+success num_regs :5
+CO2 Modbus read failed for device rc :-1
+success current_reg :-1186273104
+success num_regs :5
+CO2 Modbus read failed for device rc :-1
+success current_reg :-1186273104
+success num_regs :5
+CO2 Modbus read failed for device rc :-1
+success current_reg :-1186273104
+success num_regs :5
+CO2 Modbus read failed for device rc :-1
+Failed to read registers for device
+Wrote zeros to registers 10-14 due to device 2 failure
+success current_reg :-1186273088
+success num_regs :5
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2081, ppm1 = 2540.90, scaled_ppm1 = 2540
+CO2 : raw2 = 2694, ppm2 = 65.79, scaled_ppm2 = 65
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2540, 65, 0, 0]
+
+
+success current_reg :-1186273104
+success num_regs :5
+CO2 Modbus read failed for device rc :-1
+success current_reg :-1186273104
+success num_regs :5
+CO2 Modbus read failed for device rc :-1
+success current_reg :-1186273104
+success num_regs :5
+CO2 Modbus read failed for device rc :-1
+success current_reg :-1186273104
+success num_regs :5
+^C
+
+
+
+/********************************************************** every day log data mqtt publish data ******************************************************************/
+
+
+zedbee@pine64:~/co2_sen$ cd log/
+zedbee@pine64:~/co2_sen/log$ ls
+2025-09-11.txt  2025-09-12.txt  2025-09-16.txt  2025-09-17.txt  2025-09-18.txt  2025-09-19.txt  2025-09-22.txt  2025-09-23.txt
+zedbee@pine64:~/co2_sen/log$
+zedbee@pine64:~/co2_sen/log$ tail -f 2025-09-23.txt
+[Tue Sep 23 17:01:52 2025] CO2 : reg[6] = 0
+
+[Tue Sep 23 17:01:52 2025] CO2 : reg[7] = 0
+
+[Tue Sep 23 17:01:52 2025] Wrote 5 registers starting at 0:
+[Tue Sep 23 17:01:52 2025] Register[0] = 0
+[Tue Sep 23 17:01:52 2025] Register[1] = 2536
+[Tue Sep 23 17:01:52 2025] Register[2] = 65
+[Tue Sep 23 17:01:52 2025] Register[3] = 0
+[Tue Sep 23 17:01:52 2025] Register[4] = 0
+[Tue Sep 23 17:02:55 2025] Modbus server started on 192.168.0.136:5503, Slave ID: 1
+[Tue Sep 23 17:02:55 2025] New connection from 192.168.0.136:16107 on socket 7
+[Tue Sep 23 17:02:55 2025] CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+
+[Tue Sep 23 17:02:55 2025] CO2 : raw1 = 2078, ppm1 = 2537.24, scaled_ppm1 = 2537
+
+[Tue Sep 23 17:02:55 2025] CO2 : raw2 = 2694, ppm2 = 65.79, scaled_ppm2 = 65
+
+[Tue Sep 23 17:02:55 2025] CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+
+[Tue Sep 23 17:02:55 2025] CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+
+[Tue Sep 23 17:02:55 2025] CO2 : reg[5] = 0
+
+[Tue Sep 23 17:02:55 2025] CO2 : reg[6] = 0
+
+[Tue Sep 23 17:02:55 2025] CO2 : reg[7] = 0
+
+[Tue Sep 23 17:02:55 2025] Wrote 5 registers starting at 0:
+[Tue Sep 23 17:02:55 2025] Register[0] = 0
+[Tue Sep 23 17:02:55 2025] Register[1] = 2537
+[Tue Sep 23 17:02:55 2025] Register[2] = 65
+[Tue Sep 23 17:02:55 2025] Register[3] = 0
+[Tue Sep 23 17:02:55 2025] Register[4] = 0
+[Tue Sep 23 17:02:56 2025] New connection from 192.168.0.104:52183 on socket 9
+[Tue Sep 23 17:02:59 2025] New connection from 192.168.0.110:62973 on socket 10
+[Tue Sep 23 17:03:00 2025] Wrote 5 registers starting at 10:
+[Tue Sep 23 17:03:00 2025] Register[10] = 0
+[Tue Sep 23 17:03:00 2025] Register[11] = 0
+[Tue Sep 23 17:03:00 2025] Register[12] = 0
+[Tue Sep 23 17:03:00 2025] Register[13] = 0
+[Tue Sep 23 17:03:00 2025] Register[14] = 0
+[Tue Sep 23 17:03:00 2025] Forwared stored message topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758625685000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"25.31","hum":"66","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"1089","temp":"24.90","hum":"89","pmtwofive":"0","pmten":"0"}]}
+[Tue Sep 23 17:03:00 2025] Forwared stored message topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758625990000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"25.37","hum":"64","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"1090","temp":"24.95","hum":"88","pmtwofive":"0","pmten":"0"}]}
+[Tue Sep 23 17:03:00 2025] Forwared stored message topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758626290000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"25.34","hum":"62","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+[Tue Sep 23 17:03:00 2025] Forwared stored message topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758626590000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"25.32","hum":"62","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+[Tue Sep 23 17:03:00 2025] Forwared stored message topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758626890000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"25.32","hum":"64","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+[Tue Sep 23 17:03:01 2025] New connection from 192.168.0.136:36056 on socket 11
+[Tue Sep 23 17:03:01 2025] Published to topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758627181000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"25.37","hum":"65","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+[Tue Sep 23 17:03:05 2025] CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+
+[Tue Sep 23 17:03:05 2025] CO2 : raw1 = 2080, ppm1 = 2539.68, scaled_ppm1 = 2539
+
+[Tue Sep 23 17:03:05 2025] CO2 : raw2 = 2694, ppm2 = 65.79, scaled_ppm2 = 65
+
+[Tue Sep 23 17:03:05 2025] CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+
+[Tue Sep 23 17:03:05 2025] CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+
+[Tue Sep 23 17:03:05 2025] CO2 : reg[5] = 0
+
+[Tue Sep 23 17:03:05 2025] CO2 : reg[6] = 0
+
+[Tue Sep 23 17:03:05 2025] CO2 : reg[7] = 0
+
+[Tue Sep 23 17:03:05 2025] Wrote 5 registers starting at 0:
+[Tue Sep 23 17:03:05 2025] Register[0] = 0
+[Tue Sep 23 17:03:05 2025] Register[1] = 2539
+[Tue Sep 23 17:03:05 2025] Register[2] = 65
+[Tue Sep 23 17:03:05 2025] Register[3] = 0
+[Tue Sep 23 17:03:05 2025] Register[4] = 0
+[Tue Sep 23 17:03:13 2025] Wrote 5 registers starting at 10:
+[Tue Sep 23 17:03:13 2025] Register[10] = 0
+[Tue Sep 23 17:03:13 2025] Register[11] = 0
+[Tue Sep 23 17:03:13 2025] Register[12] = 0
+[Tue Sep 23 17:03:13 2025] Register[13] = 0
+[Tue Sep 23 17:03:13 2025] Register[14] = 0
+[Tue Sep 23 17:03:18 2025] CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+
+[Tue Sep 23 17:03:18 2025] CO2 : raw1 = 2081, ppm1 = 2540.90, scaled_ppm1 = 2540
+
+[Tue Sep 23 17:03:18 2025] CO2 : raw2 = 2693, ppm2 = 65.76, scaled_ppm2 = 65
+
+[Tue Sep 23 17:03:18 2025] CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+
+[Tue Sep 23 17:03:18 2025] CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+
+[Tue Sep 23 17:03:18 2025] CO2 : reg[5] = 0
+
+[Tue Sep 23 17:03:18 2025] CO2 : reg[6] = 0
+
+[Tue Sep 23 17:03:18 2025] CO2 : reg[7] = 0
+
+[Tue Sep 23 17:03:18 2025] Wrote 5 registers starting at 0:
+[Tue Sep 23 17:03:18 2025] Register[0] = 0
+[Tue Sep 23 17:03:18 2025] Register[1] = 2540
+[Tue Sep 23 17:03:18 2025] Register[2] = 65
+[Tue Sep 23 17:03:18 2025] Register[3] = 0
+[Tue Sep 23 17:03:18 2025] Register[4] = 0
+[Tue Sep 23 17:03:20 2025] Wrote 5 registers starting at 10:
+[Tue Sep 23 17:03:20 2025] Register[10] = 0
+[Tue Sep 23 17:03:20 2025] Register[11] = 0
+[Tue Sep 23 17:03:20 2025] Register[12] = 0
+[Tue Sep 23 17:03:20 2025] Register[13] = 0
+[Tue Sep 23 17:03:20 2025] Register[14] = 0
+[Tue Sep 23 17:03:25 2025] Server thread is active. Current time: Tue Sep 23 17:03:25 2025
+
+[Tue Sep 23 17:03:25 2025] CO2 client thread is active. Current time: Tue Sep 23 17:03:25 2025
+
+[Tue Sep 23 17:03:25 2025] CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+
+[Tue Sep 23 17:03:25 2025] CO2 : raw1 = 2081, ppm1 = 2540.90, scaled_ppm1 = 2540
+
+[Tue Sep 23 17:03:25 2025] CO2 : raw2 = 2693, ppm2 = 65.76, scaled_ppm2 = 65
+
+[Tue Sep 23 17:03:25 2025] CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+
+[Tue Sep 23 17:03:25 2025] CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+
+[Tue Sep 23 17:03:25 2025] CO2 : reg[5] = 0
+
+[Tue Sep 23 17:03:25 2025] CO2 : reg[6] = 0
+
+[Tue Sep 23 17:03:25 2025] CO2 : reg[7] = 0
+
+[Tue Sep 23 17:03:25 2025] Wrote 5 registers starting at 0:
+[Tue Sep 23 17:03:25 2025] Register[0] = 0
+[Tue Sep 23 17:03:25 2025] Register[1] = 2540
+[Tue Sep 23 17:03:25 2025] Register[2] = 65
+[Tue Sep 23 17:03:25 2025] Register[3] = 0
+[Tue Sep 23 17:03:25 2025] Register[4] = 0
+[Tue Sep 23 17:03:34 2025] Wrote 5 registers starting at 10:
+[Tue Sep 23 17:03:34 2025] Register[10] = 0
+[Tue Sep 23 17:03:34 2025] Register[11] = 0
+[Tue Sep 23 17:03:34 2025] Register[12] = 0
+[Tue Sep 23 17:03:34 2025] Register[13] = 0
+[Tue Sep 23 17:03:34 2025] Register[14] = 0
+[Tue Sep 23 17:03:39 2025] CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+
+[Tue Sep 23 17:03:39 2025] CO2 : raw1 = 2081, ppm1 = 2540.90, scaled_ppm1 = 2540
+
+[Tue Sep 23 17:03:39 2025] CO2 : raw2 = 2694, ppm2 = 65.79, scaled_ppm2 = 65
+
+[Tue Sep 23 17:03:39 2025] CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+
+[Tue Sep 23 17:03:39 2025] CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+
+[Tue Sep 23 17:03:39 2025] CO2 : reg[5] = 0
+
+[Tue Sep 23 17:03:39 2025] CO2 : reg[6] = 0
+
+[Tue Sep 23 17:03:39 2025] CO2 : reg[7] = 0
+
+[Tue Sep 23 17:03:39 2025] Wrote 5 registers starting at 0:
+[Tue Sep 23 17:03:39 2025] Register[0] = 0
+[Tue Sep 23 17:03:39 2025] Register[1] = 2540
+[Tue Sep 23 17:03:39 2025] Register[2] = 65
+[Tue Sep 23 17:03:39 2025] Register[3] = 0
+[Tue Sep 23 17:03:39 2025] Register[4] = 0
+^C
+zedbee@pine64:~/co2_sen/log$

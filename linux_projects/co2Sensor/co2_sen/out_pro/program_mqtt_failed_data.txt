@@ -1,0 +1,6 @@
+zedbee@pine64:~/co2_sen$ =======> tail -f mqtt_store_data.txt
+
+1758696053|/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101|{"timestamp":"1758696053000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"25.36","hum":"62","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+
+1758696388|/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101|{"timestamp":"1758696353000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"25.34","hum":"64","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+

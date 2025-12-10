@@ -1,0 +1,16 @@
+zedbee@pine64:~/co2_sen/log$
+zedbee@pine64:~/co2_sen/log$ tail -f 2025-09-19.txt
+[Fri Sep 19 17:54:55 2025] CO2 client thread is active. Current time: Fri Sep 19 17:54:55 2025
+
+[Fri Sep 19 17:55:26 2025] CO2 client thread is active. Current time: Fri Sep 19 17:55:26 2025
+
+[Fri Sep 19 17:55:58 2025] CO2 client thread is active. Current time: Fri Sep 19 17:55:58 2025
+
+[Fri Sep 19 17:56:29 2025] CO2 client thread is active. Current time: Fri Sep 19 17:56:29 2025
+
+[Fri Sep 19 17:57:01 2025] CO2 client thread is active. Current time: Fri Sep 19 17:57:01 2025
+
+[Fri Sep 19 18:15:55 2025] Forwared stored message topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758284457000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"0.01","hum":"6","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+[Fri Sep 19 18:15:55 2025] Forwared stored message topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758284762000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"0.01","hum":"6","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+[Fri Sep 19 18:15:55 2025] Published to topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758285955000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"0.01","hum":"6","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+[Fri Sep 19 18:16:27 2025] CO2 client thread is active. Current time: Fri Sep 19 18:16:27 2025

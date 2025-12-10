@@ -1,0 +1,13 @@
+[Unit]
+Description=Gateway by Zedbee Technologies
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/zedbee/co2_sen/renu_sen
+Restart=on-failure
+RestartSec=5
+PIDFile=/tmp/renu_sen.pid
+
+[Install]
+WantedBy=multi-user.target

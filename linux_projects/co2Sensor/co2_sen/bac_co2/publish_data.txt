@@ -1,0 +1,1067 @@
+zedbee@pine64:~/co2_sen$ make
+gcc -Wall -g -I. -c main.c -o main.o
+gcc -Wall -g -I. -c config.c -o config.o
+gcc -Wall -g -I. -c server.c -o server.o
+gcc -Wall -g -I. -c co2_client.c -o co2_client.o
+gcc -Wall -g -I. -c mqtt.c -o mqtt.o
+gcc -Wall -g -I. -c jsonify.c -o jsonify.o
+gcc -Wall -g -I. -c boodskap.c -o boodskap.o
+gcc main.o config.o server.o co2_client.o mqtt.o jsonify.o boodskap.o -o co2_sen_renu -lmodbus -lpaho-mqtt3c -lcjson -pthread -lm
+zedbee@pine64:~/co2_sen$
+zedbee@pine64:~/co2_sen$ ./co2_sen_renu
+Main: Current working directory: /home/zedbee/co2_sen
+total devices : 2
+
+
+MQTT thread started
+Current working directory: /home/zedbee/co2_sen
+Connected to client first device
+MQTT connection success
+Attempting to forward stored messages
+open the temp file success **********
+
+MQTT thread loop iteration
+main.c mqtt send data buffer reg[0] = 0
+main.c mqtt send data buffer reg[1] = 1
+main.c mqtt send data buffer reg[2] = 6
+main.c mqtt send data buffer reg[3] = 0
+main.c mqtt send data buffer reg[4] = 0
+main.c mqtt send data buffer reg[5] = 0
+main.c mqtt send data buffer reg[6] = 0
+main.c mqtt send data buffer reg[7] = 0
+main.c mqtt send data buffer reg[8] = 0
+main.c mqtt send data buffer reg[9] = 0
+main.c mqtt send data buffer reg[10] = 0
+main.c mqtt send data buffer reg[11] = 0
+main.c mqtt send data buffer reg[12] = 0
+main.c mqtt send data buffer reg[13] = 0
+main.c mqtt send data buffer reg[14] = 0
+main.c mqtt send data buffer reg[15] = 0
+main.c mqtt send data buffer reg[16] = 0
+main.c mqtt send data buffer reg[17] = 0
+main.c mqtt send data buffer reg[18] = 0
+main.c mqtt send data buffer reg[19] = 0
+
+
+
+
+Published to topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758284157000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"0.01","hum":"6","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+Failed to connect to device
+Connected to client second device
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 17:46:29 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+Connection lost: unknown
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 17:47:00 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 17:47:32 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 17:48:03 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 17:48:35 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+
+CO2 client thread is active at Fri Sep 19 17:49:07 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 17:49:38 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 17:50:10 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 17:50:42 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+MQTT thread loop iteration
+MQTT thread is active. Current time: Fri Sep 19 17:50:57 2025
+main.c mqtt send data buffer reg[0] = 0
+main.c mqtt send data buffer reg[1] = 1
+main.c mqtt send data buffer reg[2] = 6
+main.c mqtt send data buffer reg[3] = 0
+main.c mqtt send data buffer reg[4] = 0
+main.c mqtt send data buffer reg[5] = 0
+main.c mqtt send data buffer reg[6] = 0
+main.c mqtt send data buffer reg[7] = 0
+main.c mqtt send data buffer reg[8] = 0
+main.c mqtt send data buffer reg[9] = 0
+main.c mqtt send data buffer reg[10] = 0
+main.c mqtt send data buffer reg[11] = 0
+main.c mqtt send data buffer reg[12] = 0
+main.c mqtt send data buffer reg[13] = 0
+main.c mqtt send data buffer reg[14] = 0
+main.c mqtt send data buffer reg[15] = 0
+main.c mqtt send data buffer reg[16] = 0
+main.c mqtt send data buffer reg[17] = 0
+main.c mqtt send data buffer reg[18] = 0
+main.c mqtt send data buffer reg[19] = 0
+
+
+
+
+Publish failed: -3 (Disconnected)
+Attempting to store message
+Stored locally topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758284457000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"0.01","hum":"6","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+Failed to publish sensor data
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 17:51:13 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 17:51:45 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 17:52:16 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 17:52:48 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 17:53:20 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 17:53:51 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 17:54:23 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 17:54:55 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 17:55:26 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+MQTT thread loop iteration
+MQTT thread is active. Current time: Fri Sep 19 17:55:57 2025
+Failed to set callbacks: -1 (Failure)
+MQTT reconnection failed
+Failed to read Modbus registers: Bad file descriptor
+CO2 client thread is active at Fri Sep 19 17:55:58 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+MQTT thread loop iteration
+Failed to set callbacks: -1 (Failure)
+MQTT reconnection failed
+main.c mqtt send data buffer reg[0] = 0
+main.c mqtt send data buffer reg[1] = 1
+main.c mqtt send data buffer reg[2] = 6
+main.c mqtt send data buffer reg[3] = 0
+main.c mqtt send data buffer reg[4] = 0
+main.c mqtt send data buffer reg[5] = 0
+main.c mqtt send data buffer reg[6] = 0
+main.c mqtt send data buffer reg[7] = 0
+main.c mqtt send data buffer reg[8] = 0
+main.c mqtt send data buffer reg[9] = 0
+main.c mqtt send data buffer reg[10] = 0
+main.c mqtt send data buffer reg[11] = 0
+main.c mqtt send data buffer reg[12] = 0
+main.c mqtt send data buffer reg[13] = 0
+main.c mqtt send data buffer reg[14] = 0
+main.c mqtt send data buffer reg[15] = 0
+main.c mqtt send data buffer reg[16] = 0
+main.c mqtt send data buffer reg[17] = 0
+main.c mqtt send data buffer reg[18] = 0
+main.c mqtt send data buffer reg[19] = 0
+
+
+
+
+Publish failed: -1 (Failure)
+Attempting to store message
+Stored locally topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758284762000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"0.01","hum":"6","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+Failed to publish sensor data
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 17:56:29 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 17:57:01 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+^C
+zedbee@pine64:~/co2_sen$ client_loop: send disconnect: Connection reset
+
+C:\Users\Zedbee>ssh zedbee@192.168.0.136
+zedbee@192.168.0.136's password:
+    _             _    _
+   /_\  _ _ _ __ | |__(_)__ _ _ _
+  / _ \| '_| '  \| '_ \ / _` | ' \
+ /_/ \_\_| |_|_|_|_.__/_\__,_|_||_|
+
+ v25.8.1 for Pine64 running Armbian Linux 6.12.35-current-sunxi64
+
+ Packages:     Debian stable (bookworm), possible distro upgrade (trixie)
+ Updates:      Kernel upgrade enabled and 65 packages available for upgrade
+ IPv4:         (LAN) 192.168.0.136 (WAN) 210.18.133.225
+
+ Performance:
+
+ Load:         2%                Uptime:       23:34     Local users:  4
+ Memory usage: 15% of 971M
+ CPU temp:     33°C              Usage of /:   3% of 57G
+
+ Commands:
+
+ Upgrade    : armbian-upgrade
+ Monitoring : htop
+
+Last login: Fri Sep 19 18:14:54 2025 from 192.168.0.103
+zedbee@pine64:~$
+zedbee@pine64:~$ cd co2_sen
+zedbee@pine64:~/co2_sen$
+zedbee@pine64:~/co2_sen$ ls
+a.out        clien_co2.c          co2_client.o    config.o                  jsonify.c  main_co2_client.c  Makefile     mqtt_ms.c            open_tx.c       server.c
+auto_garb.c  co2_client_bac.c     co2_clie_rag.c  configurations            jsonify.h  main_ms.c          ma_server.c  mqtt_murugan.c       output.txt      server.h
+boodskap.c   co2_client.c         co2_sen_renu    data.h                    jsonify.o  main_muruga.c      mqtt1.c      mqtt_murugan_uk.c    sam             server_mur.c
+boodskap.h   co2_client.h         config2.c       data_mqtt_pub_output.txt  km.txt     main_murugan_uk.c  mqtt2.c      mqtt.o               sam_co2_clin.c  server.o
+boodskap.o   co2_client_ma_bac.c  config.c        error.bin                 log        main.o             mqtt.c       mqtt_store_data.txt  sam_main.c
+cli.c        co2_client_mur.c     config.h        fine_publish              main.c     main_server.c      mqtt.h       mqtt_yest.c          sam_server.c
+zedbee@pine64:~/co2_sen$
+zedbee@pine64:~/co2_sen$ ./co2_sen_renu
+Main: Current working directory: /home/zedbee/co2_sen
+total devices : 2
+
+
+MQTT thread started
+Current working directory: /home/zedbee/co2_sen
+Connected to client first device
+MQTT connection success
+Attempting to forward stored messages
+open the temp file success **********
+
+****************>Forwarded stored message to topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758284457000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"0.01","hum":"6","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+
+****************>Forwarded stored message to topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758284762000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"0.01","hum":"6","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+
+MQTT thread loop iteration
+main.c mqtt send data buffer reg[0] = 0
+main.c mqtt send data buffer reg[1] = 1
+main.c mqtt send data buffer reg[2] = 6
+main.c mqtt send data buffer reg[3] = 0
+main.c mqtt send data buffer reg[4] = 0
+main.c mqtt send data buffer reg[5] = 0
+main.c mqtt send data buffer reg[6] = 0
+main.c mqtt send data buffer reg[7] = 0
+main.c mqtt send data buffer reg[8] = 0
+main.c mqtt send data buffer reg[9] = 0
+main.c mqtt send data buffer reg[10] = 0
+main.c mqtt send data buffer reg[11] = 0
+main.c mqtt send data buffer reg[12] = 0
+main.c mqtt send data buffer reg[13] = 0
+main.c mqtt send data buffer reg[14] = 0
+main.c mqtt send data buffer reg[15] = 0
+main.c mqtt send data buffer reg[16] = 0
+main.c mqtt send data buffer reg[17] = 0
+main.c mqtt send data buffer reg[18] = 0
+main.c mqtt send data buffer reg[19] = 0
+
+
+
+
+Published to topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758285955000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"0.01","hum":"6","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+Failed to connect to device
+Connected to client second device
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 client thread is active at Fri Sep 19 18:16:27 2025
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+Failed to reconnect to deviceWrote zeros to registers 10-14 due to device 2 failure
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 1, ppm1 = 1.22, scaled_ppm1 = 1
+CO2 : raw2 = 256, ppm2 = 6.25, scaled_ppm2 = 6
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 1, 6, 0, 0]
+
+
+^C
+zedbee@pine64:~/co2_sen$
+
+

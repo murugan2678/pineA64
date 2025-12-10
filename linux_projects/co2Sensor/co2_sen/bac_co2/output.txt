@@ -1,0 +1,137 @@
+zedbee@pine64:~/co2_sen$ ls
+a.out        boodskap.o        co2_client.c         co2_client.o    config.c        data.h                    jsonify.c  main.c             Makefile     mqtt.o          sam_server.c  server.o
+auto_garb.c  cli.c             co2_client.h         co2_clie_rag.c  config.h        data_mqtt_pub_output.txt  jsonify.h  main_co2_client.c  ma_server.c  sam             server.c
+boodskap.c   clien_co2.c       co2_client_ma_bac.c  co2_sen_renu    config.o        error.bin                 jsonify.o  main.o             mqtt.c       sam_co2_clin.c  server.h
+boodskap.h   co2_client_bac.c  co2_client_mur.c     config2.c       configurations  fine_publish              log        main_server.c      mqtt.h       sam_main.c      server_mur.c
+zedbee@pine64:~/co2_sen$
+zedbee@pine64:~/co2_sen$
+zedbee@pine64:~/co2_sen$
+zedbee@pine64:~/co2_sen$
+zedbee@pine64:~/co2_sen$ make clean
+rm -f main.o config.o server.o co2_client.o mqtt.o jsonify.o boodskap.o co2_sen_renu
+zedbee@pine64:~/co2_sen$
+zedbee@pine64:~/co2_sen$
+zedbee@pine64:~/co2_sen$ make
+gcc -Wall -g -I. -c main.c -o main.o
+gcc -Wall -g -I. -c config.c -o config.o
+gcc -Wall -g -I. -c server.c -o server.o
+gcc -Wall -g -I. -c co2_client.c -o co2_client.o
+gcc -Wall -g -I. -c mqtt.c -o mqtt.o
+gcc -Wall -g -I. -c jsonify.c -o jsonify.o
+gcc -Wall -g -I. -c boodskap.c -o boodskap.o
+gcc main.o config.o server.o co2_client.o mqtt.o jsonify.o boodskap.o -o co2_sen_renu -lmodbus -lpaho-mqtt3c -lcjson -pthread
+zedbee@pine64:~/co2_sen$
+zedbee@pine64:~/co2_sen$ ./co2_sen_renu
+total devices : 2
+
+
+Connected to client first device
+Connected to client second device
+
+write reg 0 : 0
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+
+write reg 1 : 2100
+CO2 : raw1 = 2100, ppm1 = 2564.10, scaled_ppm1 = 2564
+
+write reg 2 : 2576
+CO2 : raw2 = 2576, ppm2 = 62.91, scaled_ppm2 = 62
+
+write reg 3 : 0
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+
+write reg 4 : 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2564, 62, 0, 0]
+
+
+
+write reg1 0 : 2034
+CO2 : raw10 = 2034, ppm10 = 993.41, scaled_ppm10 = 993
+
+write reg1 1 : 567
+CO2 : raw11 = 567, ppm11 = 692.31, scaled_ppm11 = 692
+
+write reg1 2 : 987
+CO2 : raw12 = 987, ppm12 = 24.10, scaled_ppm12 = 24
+
+write reg1 3 : 0
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+
+write reg1 4 : 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [993, 692, 24, 0, 0]
+
+
+MQTT connection success
+main.c mqtt send data buffer reg[0] = 0
+main.c mqtt send data buffer reg[1] = 2564
+main.c mqtt send data buffer reg[2] = 62
+main.c mqtt send data buffer reg[3] = 0
+main.c mqtt send data buffer reg[4] = 0
+main.c mqtt send data buffer reg[5] = 0
+main.c mqtt send data buffer reg[6] = 0
+main.c mqtt send data buffer reg[7] = 0
+main.c mqtt send data buffer reg[8] = 0
+main.c mqtt send data buffer reg[9] = 0
+main.c mqtt send data buffer reg[10] = 993
+main.c mqtt send data buffer reg[11] = 692
+main.c mqtt send data buffer reg[12] = 24
+main.c mqtt send data buffer reg[13] = 0
+main.c mqtt send data buffer reg[14] = 0
+main.c mqtt send data buffer reg[15] = 0
+main.c mqtt send data buffer reg[16] = 0
+main.c mqtt send data buffer reg[17] = 0
+main.c mqtt send data buffer reg[18] = 0
+main.c mqtt send data buffer reg[19] = 0
+
+
+
+
+Publish to topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101' : {"timestamp":"1758029009000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"25.64","hum":"62","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"993","temp":"6.92","hum":"24","pmtwofive":"0","pmten":"0"}]}
+Publish to topic
+write reg 0 : 0
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+
+write reg 1 : 2101
+CO2 : raw1 = 2101, ppm1 = 2565.32, scaled_ppm1 = 2565
+
+write reg 2 : 2577
+CO2 : raw2 = 2577, ppm2 = 62.93, scaled_ppm2 = 62
+
+write reg 3 : 0
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+
+write reg 4 : 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+Writing scaled_ppm to registers 0-4: [0, 2565, 62, 0, 0]
+
+
+
+write reg1 0 : 2034
+CO2 : raw10 = 2034, ppm10 = 993.41, scaled_ppm10 = 993
+
+write reg1 1 : 567
+CO2 : raw11 = 567, ppm11 = 692.31, scaled_ppm11 = 692
+
+write reg1 2 : 987
+CO2 : raw12 = 987, ppm12 = 24.10, scaled_ppm12 = 24
+
+write reg1 3 : 0
+CO2 : raw13 = 0, ppm13 = 0.00, scaled_ppm13 = 0
+
+write reg1 4 : 0
+CO2 : raw14 = 0, ppm14 = 0.00, scaled_ppm14 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+Writing scaled_ppm to registers 10-14: [993, 692, 24, 0, 0]

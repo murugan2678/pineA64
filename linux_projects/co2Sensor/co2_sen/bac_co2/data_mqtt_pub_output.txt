@@ -1,0 +1,70 @@
+ne64:~/co2_sen$ ls
+boodskap.c  boodskap.o    co2_client.h  co2_sen_renu  config.c  config.o        data.h     fine_publish  jsonify.h  log     main.o    mqtt.c  mqtt.o  server.c  server.o
+boodskap.h  co2_client.c  co2_client.o  config2.c     config.h  configurations  error.bin  jsonify.c     jsonify.o  main.c  Makefile  mqtt.h  sam     server.h
+
+zedbee@pine64:~/co2_sen$ make clean
+rm -f main.o config.o server.o co2_client.o mqtt.o jsonify.o boodskap.o co2_sen_renu
+
+zedbee@pine64:~/co2_sen$ make
+gcc -Wall -g -I. -c main.c -o main.o
+gcc -Wall -g -I. -c config.c -o config.o
+gcc -Wall -g -I. -c server.c -o server.o
+gcc -Wall -g -I. -c co2_client.c -o co2_client.o
+gcc -Wall -g -I. -c mqtt.c -o mqtt.o
+gcc -Wall -g -I. -c jsonify.c -o jsonify.o
+gcc -Wall -g -I. -c boodskap.c -o boodskap.o
+gcc main.o config.o server.o co2_client.o mqtt.o jsonify.o boodskap.o -o co2_sen_renu -lmodbus -lpaho-mqtt3c -lcjson -pthread
+
+zedbee@pine64:~/co2_sen$ ./co2_sen_renu
+total devices : 2
+
+
+co2 device index 1 = 0
+co2 device index 2 = 1
+write reg 0 : 0
+
+write reg 1 : 2581
+
+write reg 2 : 65
+
+write reg 3 : 0
+
+write reg 4 : 0
+
+write reg1 0 : 1069
+
+write reg1 1 : 2538
+
+write reg1 2 : 88
+
+write reg1 3 : 0
+
+write reg1 4 : 0
+
+CO2 : raw0 = 0, ppm0 = 0.00, scaled_ppm0 = 0
+CO2 : raw1 = 2114, ppm1 = 2581.20, scaled_ppm1 = 2581
+CO2 : raw2 = 2685, ppm2 = 65.57, scaled_ppm2 = 65
+CO2 : raw3 = 0, ppm3 = 0.00, scaled_ppm3 = 0
+CO2 : raw4 = 0, ppm4 = 0.00, scaled_ppm4 = 0
+CO2 : reg[5] = 0
+CO2 : reg[6] = 0
+CO2 : reg[7] = 0
+
+
+CO2 : raw6 = 2190, ppm6 = 1069.60, scaled_ppm6 = 1069
+CO2 : raw7 = 2079, ppm7 = 2538.46, scaled_ppm7 = 2538
+CO2 : raw8 = 3636, ppm8 = 88.79, scaled_ppm8 = 88
+CO2 : raw9 = 0, ppm9 = 0.00, scaled_ppm9 = 0
+CO2 : raw10 = 0, ppm10 = 0.00, scaled_ppm10 = 0
+CO2 : reg1[5] = 0
+CO2 : reg1[6] = 0
+CO2 : reg1[7] = 0
+
+
+MQTT connection success
+
+
+Publish to topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101' : {"timestamp":"1757593499000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"25.81","hum":"65","pmtwofive":"0","pmten":"0"}]}
+
+
+Publish to topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101' : {"timestamp":"1757593499000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0335","cotwo":"1069","temp":"25.38","hum":"88","pmtwofive":"0","pmten":"0"}]}

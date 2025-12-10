@@ -1,0 +1,363 @@
+[Fri Sep 19 11:19:59 2025] CO2 client thread is active. Current time: Fri Sep 19 11:19:59 2025
+
+[Fri Sep 19 11:20:31 2025] CO2 client thread is active. Current time: Fri Sep 19 11:20:31 2025
+
+[Fri Sep 19 11:21:03 2025] CO2 client thread is active. Current time: Fri Sep 19 11:21:03 2025
+
+[Fri Sep 19 11:21:34 2025] CO2 client thread is active. Current time: Fri Sep 19 11:21:34 2025
+
+[Fri Sep 19 11:22:06 2025] CO2 client thread is active. Current time: Fri Sep 19 11:22:06 2025
+
+[Fri Sep 19 11:22:37 2025] CO2 client thread is active. Current time: Fri Sep 19 11:22:37 2025
+
+[Fri Sep 19 11:23:09 2025] CO2 client thread is active. Current time: Fri Sep 19 11:23:09 2025
+
+[Fri Sep 19 11:23:41 2025] CO2 client thread is active. Current time: Fri Sep 19 11:23:41 2025
+
+[Fri Sep 19 11:24:12 2025] CO2 client thread is active. Current time: Fri Sep 19 11:24:12 2025
+
+[Fri Sep 19 11:25:38 2025] CO2 client thread is active. Current time: Fri Sep 19 11:25:38 2025
+
+[Fri Sep 19 11:26:09 2025] CO2 client thread is active. Current time: Fri Sep 19 11:26:09 2025
+
+[Fri Sep 19 11:26:41 2025] CO2 client thread is active. Current time: Fri Sep 19 11:26:41 2025
+
+[Fri Sep 19 11:27:13 2025] CO2 client thread is active. Current time: Fri Sep 19 11:27:13 2025
+
+[Fri Sep 19 11:27:44 2025] CO2 client thread is active. Current time: Fri Sep 19 11:27:44 2025
+
+[Fri Sep 19 11:28:16 2025] CO2 client thread is active. Current time: Fri Sep 19 11:28:16 2025
+
+[Fri Sep 19 11:28:48 2025] CO2 client thread is active. Current time: Fri Sep 19 11:28:48 2025
+
+[Fri Sep 19 11:29:19 2025] CO2 client thread is active. Current time: Fri Sep 19 11:29:19 2025
+
+[Fri Sep 19 11:29:51 2025] CO2 client thread is active. Current time: Fri Sep 19 11:29:51 2025
+
+[Fri Sep 19 11:30:22 2025] CO2 client thread is active. Current time: Fri Sep 19 11:30:22 2025
+
+[Fri Sep 19 11:30:54 2025] CO2 client thread is active. Current time: Fri Sep 19 11:30:54 2025
+
+[Fri Sep 19 11:31:26 2025] CO2 client thread is active. Current time: Fri Sep 19 11:31:26 2025
+
+[Fri Sep 19 11:31:58 2025] CO2 client thread is active. Current time: Fri Sep 19 11:31:58 2025
+
+[Fri Sep 19 11:32:29 2025] CO2 client thread is active. Current time: Fri Sep 19 11:32:29 2025
+
+[Fri Sep 19 11:33:01 2025] CO2 client thread is active. Current time: Fri Sep 19 11:33:01 2025
+
+[Fri Sep 19 11:33:33 2025] CO2 client thread is active. Current time: Fri Sep 19 11:33:33 2025
+
+[Fri Sep 19 11:34:04 2025] CO2 client thread is active. Current time: Fri Sep 19 11:34:04 2025
+
+[Fri Sep 19 11:34:36 2025] CO2 client thread is active. Current time: Fri Sep 19 11:34:36 2025
+
+[Fri Sep 19 11:35:08 2025] CO2 client thread is active. Current time: Fri Sep 19 11:35:08 2025
+
+[Fri Sep 19 11:35:39 2025] CO2 client thread is active. Current time: Fri Sep 19 11:35:39 2025
+
+[Fri Sep 19 11:36:11 2025] CO2 client thread is active. Current time: Fri Sep 19 11:36:11 2025
+
+[Fri Sep 19 11:36:42 2025] CO2 client thread is active. Current time: Fri Sep 19 11:36:42 2025
+
+[Fri Sep 19 11:37:14 2025] CO2 client thread is active. Current time: Fri Sep 19 11:37:14 2025
+
+[Fri Sep 19 11:37:46 2025] CO2 client thread is active. Current time: Fri Sep 19 11:37:46 2025
+
+[Fri Sep 19 11:38:17 2025] CO2 client thread is active. Current time: Fri Sep 19 11:38:17 2025
+
+[Fri Sep 19 11:38:49 2025] CO2 client thread is active. Current time: Fri Sep 19 11:38:49 2025
+
+[Fri Sep 19 11:39:21 2025] CO2 client thread is active. Current time: Fri Sep 19 11:39:21 2025
+
+[Fri Sep 19 11:39:52 2025] CO2 client thread is active. Current time: Fri Sep 19 11:39:52 2025
+
+[Fri Sep 19 11:40:24 2025] CO2 client thread is active. Current time: Fri Sep 19 11:40:24 2025
+
+[Fri Sep 19 11:40:56 2025] CO2 client thread is active. Current time: Fri Sep 19 11:40:56 2025
+
+[Fri Sep 19 11:41:27 2025] CO2 client thread is active. Current time: Fri Sep 19 11:41:27 2025
+
+[Fri Sep 19 11:41:59 2025] CO2 client thread is active. Current time: Fri Sep 19 11:41:59 2025
+
+[Fri Sep 19 11:42:31 2025] CO2 client thread is active. Current time: Fri Sep 19 11:42:31 2025
+
+[Fri Sep 19 11:43:02 2025] CO2 client thread is active. Current time: Fri Sep 19 11:43:02 2025
+
+[Fri Sep 19 11:43:34 2025] CO2 client thread is active. Current time: Fri Sep 19 11:43:34 2025
+
+[Fri Sep 19 11:44:06 2025] CO2 client thread is active. Current time: Fri Sep 19 11:44:06 2025
+
+[Fri Sep 19 11:44:37 2025] CO2 client thread is active. Current time: Fri Sep 19 11:44:37 2025
+
+[Fri Sep 19 11:45:09 2025] CO2 client thread is active. Current time: Fri Sep 19 11:45:09 2025
+
+[Fri Sep 19 11:45:41 2025] CO2 client thread is active. Current time: Fri Sep 19 11:45:41 2025
+
+[Fri Sep 19 11:46:12 2025] CO2 client thread is active. Current time: Fri Sep 19 11:46:12 2025
+
+[Fri Sep 19 11:46:44 2025] CO2 client thread is active. Current time: Fri Sep 19 11:46:44 2025
+
+[Fri Sep 19 11:47:15 2025] CO2 client thread is active. Current time: Fri Sep 19 11:47:15 2025
+
+[Fri Sep 19 11:47:47 2025] CO2 client thread is active. Current time: Fri Sep 19 11:47:47 2025
+
+[Fri Sep 19 11:48:19 2025] CO2 client thread is active. Current time: Fri Sep 19 11:48:19 2025
+
+[Fri Sep 19 11:48:50 2025] CO2 client thread is active. Current time: Fri Sep 19 11:48:50 2025
+
+[Fri Sep 19 11:49:22 2025] CO2 client thread is active. Current time: Fri Sep 19 11:49:22 2025
+
+[Fri Sep 19 11:49:54 2025] CO2 client thread is active. Current time: Fri Sep 19 11:49:54 2025
+
+[Fri Sep 19 11:50:25 2025] CO2 client thread is active. Current time: Fri Sep 19 11:50:25 2025
+
+[Fri Sep 19 11:50:57 2025] CO2 client thread is active. Current time: Fri Sep 19 11:50:57 2025
+
+[Fri Sep 19 11:51:29 2025] CO2 client thread is active. Current time: Fri Sep 19 11:51:29 2025
+
+[Fri Sep 19 11:52:00 2025] CO2 client thread is active. Current time: Fri Sep 19 11:52:00 2025
+
+[Fri Sep 19 11:52:32 2025] CO2 client thread is active. Current time: Fri Sep 19 11:52:32 2025
+
+[Fri Sep 19 11:53:04 2025] CO2 client thread is active. Current time: Fri Sep 19 11:53:04 2025
+
+[Fri Sep 19 11:53:35 2025] CO2 client thread is active. Current time: Fri Sep 19 11:53:35 2025
+
+[Fri Sep 19 11:54:07 2025] CO2 client thread is active. Current time: Fri Sep 19 11:54:07 2025
+
+[Fri Sep 19 11:54:39 2025] CO2 client thread is active. Current time: Fri Sep 19 11:54:39 2025
+
+[Fri Sep 19 11:55:11 2025] CO2 client thread is active. Current time: Fri Sep 19 11:55:11 2025
+
+[Fri Sep 19 11:55:42 2025] CO2 client thread is active. Current time: Fri Sep 19 11:55:42 2025
+
+[Fri Sep 19 11:56:14 2025] CO2 client thread is active. Current time: Fri Sep 19 11:56:14 2025
+
+[Fri Sep 19 11:56:45 2025] CO2 client thread is active. Current time: Fri Sep 19 11:56:45 2025
+
+[Fri Sep 19 11:57:17 2025] CO2 client thread is active. Current time: Fri Sep 19 11:57:17 2025
+
+[Fri Sep 19 12:34:45 2025] CO2 client thread is active. Current time: Fri Sep 19 12:34:45 2025
+
+[Fri Sep 19 12:35:17 2025] CO2 client thread is active. Current time: Fri Sep 19 12:35:17 2025
+
+[Fri Sep 19 12:36:37 2025] CO2 client thread is active. Current time: Fri Sep 19 12:36:37 2025
+
+[Fri Sep 19 12:37:08 2025] CO2 client thread is active. Current time: Fri Sep 19 12:37:08 2025
+
+[Fri Sep 19 12:37:40 2025] CO2 client thread is active. Current time: Fri Sep 19 12:37:40 2025
+
+[Fri Sep 19 12:38:12 2025] CO2 client thread is active. Current time: Fri Sep 19 12:38:12 2025
+
+[Fri Sep 19 12:38:43 2025] CO2 client thread is active. Current time: Fri Sep 19 12:38:43 2025
+
+[Fri Sep 19 12:39:15 2025] CO2 client thread is active. Current time: Fri Sep 19 12:39:15 2025
+
+[Fri Sep 19 12:39:46 2025] CO2 client thread is active. Current time: Fri Sep 19 12:39:46 2025
+
+[Fri Sep 19 12:40:18 2025] CO2 client thread is active. Current time: Fri Sep 19 12:40:18 2025
+
+[Fri Sep 19 12:40:50 2025] CO2 client thread is active. Current time: Fri Sep 19 12:40:50 2025
+
+[Fri Sep 19 12:41:53 2025] CO2 client thread is active. Current time: Fri Sep 19 12:41:53 2025
+
+[Fri Sep 19 12:42:24 2025] CO2 client thread is active. Current time: Fri Sep 19 12:42:24 2025
+
+[Fri Sep 19 12:42:56 2025] CO2 client thread is active. Current time: Fri Sep 19 12:42:56 2025
+
+[Fri Sep 19 12:43:27 2025] CO2 client thread is active. Current time: Fri Sep 19 12:43:27 2025
+
+[Fri Sep 19 12:43:59 2025] CO2 client thread is active. Current time: Fri Sep 19 12:43:59 2025
+
+[Fri Sep 19 12:44:31 2025] CO2 client thread is active. Current time: Fri Sep 19 12:44:31 2025
+
+[Fri Sep 19 12:45:02 2025] CO2 client thread is active. Current time: Fri Sep 19 12:45:02 2025
+
+[Fri Sep 19 12:45:34 2025] CO2 client thread is active. Current time: Fri Sep 19 12:45:34 2025
+
+[Fri Sep 19 12:46:06 2025] CO2 client thread is active. Current time: Fri Sep 19 12:46:06 2025
+
+[Fri Sep 19 12:46:37 2025] CO2 client thread is active. Current time: Fri Sep 19 12:46:37 2025
+
+[Fri Sep 19 12:47:09 2025] CO2 client thread is active. Current time: Fri Sep 19 12:47:09 2025
+
+[Fri Sep 19 12:47:40 2025] CO2 client thread is active. Current time: Fri Sep 19 12:47:40 2025
+
+[Fri Sep 19 12:48:12 2025] CO2 client thread is active. Current time: Fri Sep 19 12:48:12 2025
+
+[Fri Sep 19 12:48:44 2025] CO2 client thread is active. Current time: Fri Sep 19 12:48:44 2025
+
+[Fri Sep 19 12:49:15 2025] CO2 client thread is active. Current time: Fri Sep 19 12:49:15 2025
+
+[Fri Sep 19 12:49:47 2025] CO2 client thread is active. Current time: Fri Sep 19 12:49:47 2025
+
+[Fri Sep 19 12:50:18 2025] CO2 client thread is active. Current time: Fri Sep 19 12:50:18 2025
+
+[Fri Sep 19 12:50:50 2025] CO2 client thread is active. Current time: Fri Sep 19 12:50:50 2025
+
+[Fri Sep 19 12:51:21 2025] CO2 client thread is active. Current time: Fri Sep 19 12:51:21 2025
+
+[Fri Sep 19 12:51:53 2025] CO2 client thread is active. Current time: Fri Sep 19 12:51:53 2025
+
+[Fri Sep 19 12:52:26 2025] CO2 client thread is active. Current time: Fri Sep 19 12:52:26 2025
+
+[Fri Sep 19 12:52:51 2025] Published to topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758266571000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"0.01","hum":"6","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+[Fri Sep 19 12:52:59 2025] CO2 client thread is active. Current time: Fri Sep 19 12:52:59 2025
+
+[Fri Sep 19 12:53:20 2025] CO2 client thread is active. Current time: Fri Sep 19 12:53:20 2025
+
+[Fri Sep 19 12:53:32 2025] CO2 client thread is active. Current time: Fri Sep 19 12:53:32 2025
+
+[Fri Sep 19 12:53:53 2025] CO2 client thread is active. Current time: Fri Sep 19 12:53:53 2025
+
+[Fri Sep 19 12:54:05 2025] CO2 client thread is active. Current time: Fri Sep 19 12:54:05 2025
+
+[Fri Sep 19 12:54:26 2025] CO2 client thread is active. Current time: Fri Sep 19 12:54:26 2025
+
+[Fri Sep 19 12:54:38 2025] CO2 client thread is active. Current time: Fri Sep 19 12:54:38 2025
+
+[Fri Sep 19 12:54:59 2025] CO2 client thread is active. Current time: Fri Sep 19 12:54:59 2025
+
+[Fri Sep 19 12:55:11 2025] CO2 client thread is active. Current time: Fri Sep 19 12:55:11 2025
+
+[Fri Sep 19 12:55:44 2025] CO2 client thread is active. Current time: Fri Sep 19 12:55:44 2025
+
+[Fri Sep 19 12:56:15 2025] CO2 client thread is active. Current time: Fri Sep 19 12:56:15 2025
+
+[Fri Sep 19 12:56:47 2025] CO2 client thread is active. Current time: Fri Sep 19 12:56:47 2025
+
+[Fri Sep 19 12:57:19 2025] CO2 client thread is active. Current time: Fri Sep 19 12:57:19 2025
+
+[Fri Sep 19 12:57:50 2025] CO2 client thread is active. Current time: Fri Sep 19 12:57:50 2025
+
+[Fri Sep 19 12:58:22 2025] CO2 client thread is active. Current time: Fri Sep 19 12:58:22 2025
+
+[Fri Sep 19 12:58:54 2025] CO2 client thread is active. Current time: Fri Sep 19 12:58:54 2025
+
+[Fri Sep 19 12:59:27 2025] CO2 client thread is active. Current time: Fri Sep 19 12:59:27 2025
+
+[Fri Sep 19 13:00:00 2025] CO2 client thread is active. Current time: Fri Sep 19 13:00:00 2025
+
+[Fri Sep 19 13:02:20 2025] Published to topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758267140000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"0.01","hum":"6","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"1253","temp":"106.61","hum":"61","pmtwofive":"0","pmten":"0"}]}
+[Fri Sep 19 13:02:46 2025] CO2 client thread is active. Current time: Fri Sep 19 13:02:46 2025
+
+[Fri Sep 19 13:06:27 2025] Published to topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758267387000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"1253","temp":"106.61","hum":"61","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+[Fri Sep 19 17:07:38 2025] Published to topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758281858000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"0.01","hum":"6","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+[Fri Sep 19 17:09:28 2025] CO2 client thread is active. Current time: Fri Sep 19 17:09:28 2025
+
+[Fri Sep 19 17:19:43 2025] CO2 client thread is active. Current time: Fri Sep 19 17:19:43 2025
+
+[Fri Sep 19 17:20:15 2025] CO2 client thread is active. Current time: Fri Sep 19 17:20:15 2025
+
+[Fri Sep 19 17:20:47 2025] CO2 client thread is active. Current time: Fri Sep 19 17:20:47 2025
+
+[Fri Sep 19 17:21:19 2025] CO2 client thread is active. Current time: Fri Sep 19 17:21:19 2025
+
+[Fri Sep 19 17:21:50 2025] CO2 client thread is active. Current time: Fri Sep 19 17:21:50 2025
+
+[Fri Sep 19 17:22:22 2025] CO2 client thread is active. Current time: Fri Sep 19 17:22:22 2025
+
+[Fri Sep 19 17:23:32 2025] CO2 client thread is active. Current time: Fri Sep 19 17:23:32 2025
+
+[Fri Sep 19 17:24:04 2025] CO2 client thread is active. Current time: Fri Sep 19 17:24:04 2025
+
+[Fri Sep 19 17:24:36 2025] CO2 client thread is active. Current time: Fri Sep 19 17:24:36 2025
+
+[Fri Sep 19 17:25:07 2025] CO2 client thread is active. Current time: Fri Sep 19 17:25:07 2025
+
+[Fri Sep 19 17:25:39 2025] CO2 client thread is active. Current time: Fri Sep 19 17:25:39 2025
+
+[Fri Sep 19 17:26:11 2025] CO2 client thread is active. Current time: Fri Sep 19 17:26:11 2025
+
+[Fri Sep 19 17:26:42 2025] CO2 client thread is active. Current time: Fri Sep 19 17:26:42 2025
+
+[Fri Sep 19 17:27:14 2025] CO2 client thread is active. Current time: Fri Sep 19 17:27:14 2025
+
+[Fri Sep 19 17:27:45 2025] CO2 client thread is active. Current time: Fri Sep 19 17:27:45 2025
+
+[Fri Sep 19 17:28:17 2025] CO2 client thread is active. Current time: Fri Sep 19 17:28:17 2025
+
+[Fri Sep 19 17:28:49 2025] CO2 client thread is active. Current time: Fri Sep 19 17:28:49 2025
+
+[Fri Sep 19 17:29:20 2025] CO2 client thread is active. Current time: Fri Sep 19 17:29:20 2025
+
+[Fri Sep 19 17:29:52 2025] CO2 client thread is active. Current time: Fri Sep 19 17:29:52 2025
+
+[Fri Sep 19 17:30:23 2025] CO2 client thread is active. Current time: Fri Sep 19 17:30:23 2025
+
+[Fri Sep 19 17:30:55 2025] CO2 client thread is active. Current time: Fri Sep 19 17:30:55 2025
+
+[Fri Sep 19 17:31:27 2025] CO2 client thread is active. Current time: Fri Sep 19 17:31:27 2025
+
+[Fri Sep 19 17:31:58 2025] CO2 client thread is active. Current time: Fri Sep 19 17:31:58 2025
+
+[Fri Sep 19 17:32:30 2025] CO2 client thread is active. Current time: Fri Sep 19 17:32:30 2025
+
+[Fri Sep 19 17:33:02 2025] CO2 client thread is active. Current time: Fri Sep 19 17:33:02 2025
+
+[Fri Sep 19 17:33:33 2025] CO2 client thread is active. Current time: Fri Sep 19 17:33:33 2025
+
+[Fri Sep 19 17:34:05 2025] CO2 client thread is active. Current time: Fri Sep 19 17:34:05 2025
+
+[Fri Sep 19 17:34:36 2025] CO2 client thread is active. Current time: Fri Sep 19 17:34:36 2025
+
+[Fri Sep 19 17:34:51 2025] Published to topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758283486000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"0.01","hum":"6","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+[Fri Sep 19 17:35:08 2025] CO2 client thread is active. Current time: Fri Sep 19 17:35:08 2025
+
+[Fri Sep 19 17:35:40 2025] CO2 client thread is active. Current time: Fri Sep 19 17:35:40 2025
+
+[Fri Sep 19 17:36:11 2025] CO2 client thread is active. Current time: Fri Sep 19 17:36:11 2025
+
+[Fri Sep 19 17:36:43 2025] CO2 client thread is active. Current time: Fri Sep 19 17:36:43 2025
+
+[Fri Sep 19 17:37:15 2025] CO2 client thread is active. Current time: Fri Sep 19 17:37:15 2025
+
+[Fri Sep 19 17:45:57 2025] Published to topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758284157000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"0.01","hum":"6","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+[Fri Sep 19 17:46:29 2025] CO2 client thread is active. Current time: Fri Sep 19 17:46:29 2025
+
+[Fri Sep 19 17:47:00 2025] CO2 client thread is active. Current time: Fri Sep 19 17:47:00 2025
+
+[Fri Sep 19 17:47:32 2025] CO2 client thread is active. Current time: Fri Sep 19 17:47:32 2025
+
+[Fri Sep 19 17:48:03 2025] CO2 client thread is active. Current time: Fri Sep 19 17:48:03 2025
+
+[Fri Sep 19 17:48:35 2025] CO2 client thread is active. Current time: Fri Sep 19 17:48:35 2025
+
+[Fri Sep 19 17:49:07 2025] CO2 client thread is active. Current time: Fri Sep 19 17:49:07 2025
+
+[Fri Sep 19 17:49:38 2025] CO2 client thread is active. Current time: Fri Sep 19 17:49:38 2025
+
+[Fri Sep 19 17:50:10 2025] CO2 client thread is active. Current time: Fri Sep 19 17:50:10 2025
+
+[Fri Sep 19 17:50:42 2025] CO2 client thread is active. Current time: Fri Sep 19 17:50:42 2025
+
+[Fri Sep 19 17:51:13 2025] CO2 client thread is active. Current time: Fri Sep 19 17:51:13 2025
+
+[Fri Sep 19 17:51:45 2025] CO2 client thread is active. Current time: Fri Sep 19 17:51:45 2025
+
+[Fri Sep 19 17:52:16 2025] CO2 client thread is active. Current time: Fri Sep 19 17:52:16 2025
+
+[Fri Sep 19 17:52:48 2025] CO2 client thread is active. Current time: Fri Sep 19 17:52:48 2025
+
+[Fri Sep 19 17:53:20 2025] CO2 client thread is active. Current time: Fri Sep 19 17:53:20 2025
+
+[Fri Sep 19 17:53:51 2025] CO2 client thread is active. Current time: Fri Sep 19 17:53:51 2025
+
+[Fri Sep 19 17:54:23 2025] CO2 client thread is active. Current time: Fri Sep 19 17:54:23 2025
+
+[Fri Sep 19 17:54:55 2025] CO2 client thread is active. Current time: Fri Sep 19 17:54:55 2025
+
+[Fri Sep 19 17:55:26 2025] CO2 client thread is active. Current time: Fri Sep 19 17:55:26 2025
+
+[Fri Sep 19 17:55:58 2025] CO2 client thread is active. Current time: Fri Sep 19 17:55:58 2025
+
+[Fri Sep 19 17:56:29 2025] CO2 client thread is active. Current time: Fri Sep 19 17:56:29 2025
+
+[Fri Sep 19 17:57:01 2025] CO2 client thread is active. Current time: Fri Sep 19 17:57:01 2025
+
+[Fri Sep 19 18:15:55 2025] Forwared stored message topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758284457000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"0.01","hum":"6","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+[Fri Sep 19 18:15:55 2025] Forwared stored message topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758284762000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"0.01","hum":"6","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+[Fri Sep 19 18:15:55 2025] Published to topic '/BZHEZISEWY/device/ZBDID02BA2CA259E4/msgs/Gateway/1/101': {"timestamp":"1758285955000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA2CA259E4","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0230","cotwo":"0","temp":"0.01","hum":"6","pmtwofive":"0","pmten":"0"},{"id":"ZBEID0335","cotwo":"0","temp":"0.00","hum":"0","pmtwofive":"0","pmten":"0"}]}
+[Fri Sep 19 18:16:27 2025] CO2 client thread is active. Current time: Fri Sep 19 18:16:27 2025
+
