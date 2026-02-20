@@ -1,0 +1,104 @@
+
+zedbee@pine64:~/hat_modbus1$ =======> sudo make clean 
+
+rm -rf main.o gpio_control.o # hat_modbus
+
+
+zedbee@pine64:~/hat_modbus1$ =======> sudo make
+
+gcc -Wall -Wextra -c main.c -o main.o
+gcc -Wall -Wextra -c gpio_control.c -o gpio_control.o
+gcc -o hat_modbus main.o gpio_control.o -lmodbus -lgpiod
+
+
+zedbee@pine64:~/hat_modbus1$ =======> sudo ./hat_modbus 
+
+Opening /dev/ttyS3 at 19200 bauds (N, 8, 1)
+
+
+******* VAV Thermostate Datas *******
+
+[06][03][00][00][00][12][C4][70]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<06><03><24><00><06><00><01><00><00><00><00><00><00><00><00><01><F4><01><2C><01><2C><00><AD><00><19><09><C4><0A><57><00><02><03><F2><00><01><00><00><00><19><79><0C>
+Reg[0] = 6 ---> Device / Slave ID
+Reg[1] = 1 ---> Fan Mode/State 0 = OFF and 1 = ON
+Reg[2] = 0 ---> on / off source. 1 = off and 2 (or) 8 = ON 
+Reg[3] = 0 ---> mode 0 = Auto and 1 = manual (or) Calibration
+Reg[4] = 0 ---> CFM
+Reg[5] = 0 ---> CCFM
+Reg[6] = 500.00 ---> Vnom
+Reg[7] = 300.00 ---> Vmin
+Reg[8] = 300.00 ---> Vmax
+Reg[9] = 1.73 ---> Delta Pressure
+Reg[10] = 25.0% ---> Damper Position
+Reg[11] = 25.00 °C ---> Set Temperature
+Reg[12] = 26.47 °C ---> Ambient Temperature (Room Temperature)
+Reg[13] = 2 ---> PIR Status
+Reg[14] = 10.10 °C ---> Temperature Offset
+Reg[15] = 1 ---> Control Mode (0 = Pressure Dependent, 1 = Pressure Independent)
+Reg[16] = 0 ---> Direction (0 = Forward, 1 = Reverse)
+Reg[17] = 25.0% ---> Set Damper position (Commanded / set vlaue)
+
+
+
+
+******* VAV Thermostate Datas *******
+
+[06][03][00][00][00][12][C4][70]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<06><03><24><00><06><00><01><00><00><00><00><00><00><00><00><01><F4><01><2C><01><2C><00><AD><00><19><09><C4><0A><41><00><02><03><F2><00><01><00><00><00><19><33><44>
+Reg[0] = 6 ---> Device / Slave ID
+Reg[1] = 1 ---> Fan Mode/State 0 = OFF and 1 = ON
+Reg[2] = 0 ---> on / off source. 1 = off and 2 (or) 8 = ON 
+Reg[3] = 0 ---> mode 0 = Auto and 1 = manual (or) Calibration
+Reg[4] = 0 ---> CFM
+Reg[5] = 0 ---> CCFM
+Reg[6] = 500.00 ---> Vnom
+Reg[7] = 300.00 ---> Vmin
+Reg[8] = 300.00 ---> Vmax
+Reg[9] = 1.73 ---> Delta Pressure
+Reg[10] = 25.0% ---> Damper Position
+Reg[11] = 25.00 °C ---> Set Temperature
+Reg[12] = 26.25 °C ---> Ambient Temperature (Room Temperature)
+Reg[13] = 2 ---> PIR Status
+Reg[14] = 10.10 °C ---> Temperature Offset
+Reg[15] = 1 ---> Control Mode (0 = Pressure Dependent, 1 = Pressure Independent)
+Reg[16] = 0 ---> Direction (0 = Forward, 1 = Reverse)
+Reg[17] = 25.0% ---> Set Damper position (Commanded / set vlaue)
+
+
+
+
+******* VAV Thermostate Datas *******
+
+[06][03][00][00][00][12][C4][70]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<06><03><24><00><06><00><01><00><00><00><00><00><00><00><00><01><F4><01><2C><01><2C><00><AD><00><19><09><C4><0A><54><00><02><03><F2><00><01><00><00><00><19><76><48>
+Reg[0] = 6 ---> Device / Slave ID
+Reg[1] = 1 ---> Fan Mode/State 0 = OFF and 1 = ON
+Reg[2] = 0 ---> on / off source. 1 = off and 2 (or) 8 = ON 
+Reg[3] = 0 ---> mode 0 = Auto and 1 = manual (or) Calibration
+Reg[4] = 0 ---> CFM
+Reg[5] = 0 ---> CCFM
+Reg[6] = 500.00 ---> Vnom
+Reg[7] = 300.00 ---> Vmin
+Reg[8] = 300.00 ---> Vmax
+Reg[9] = 1.73 ---> Delta Pressure
+Reg[10] = 25.0% ---> Damper Position
+Reg[11] = 25.00 °C ---> Set Temperature
+Reg[12] = 26.44 °C ---> Ambient Temperature (Room Temperature)
+Reg[13] = 2 ---> PIR Status
+Reg[14] = 10.10 °C ---> Temperature Offset
+Reg[15] = 1 ---> Control Mode (0 = Pressure Dependent, 1 = Pressure Independent)
+Reg[16] = 0 ---> Direction (0 = Forward, 1 = Reverse)
+Reg[17] = 25.0% ---> Set Damper position (Commanded / set vlaue)
