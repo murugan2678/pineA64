@@ -1,0 +1,611 @@
+
+zedbee@pine64:~/vav/vav_thermo$ =======> gcc -Wall -Wextra -g -std=c11 -o vav_thermo *.c     -I/usr/local/include -L/usr/local/lib     -lpaho-mqtt3as -lmodbus -lgpiod -lcjson -lm -pthread
+
+gpio_control.c: In function ‘rts_control’:
+gpio_control.c:73:3: warning: implicit declaration of function ‘usleep’; did you mean ‘sleep’? [-Wimplicit-function-declaration]
+   73 |   usleep(on ? 1000 : 500);   // longer delay after going HIGH
+      |   ^~~~~~
+      |   sleep
+mqtt.c: In function ‘messageArrived’:
+mqtt.c:716:40: warning: zero-length gnu_printf format string [-Wformat-zero-length]
+  716 |       snprintf(reason, sizeof(reason), "");
+      |                                        ^~
+
+
+zedbee@pine64:~/vav/vav_thermo$ =======> ls
+a.out  boodskap.c  config.h  gpio_control.c  jsonify.c  km      mkSam.txt  mqtt.h               mur                  sam_new  vav_thermo
+bac    boodskap.h  data.h    gpio_control.h  jsonify.h  main.c  mqtt.c     mqtt_store_data.txt  publishInterval.txt  sm.txt
+
+
+zedbee@pine64:~/vav/vav_thermo$ =======> sudo ./vav_thermo 
+
+VAV Thermostat starting ...
+
+[STARTUP] Loaded publish interval: 300 seconds
+[POLICY] Long interval (300 s) → STORE failed messages + forward on reconnect
+Modbus: /dev/ttyS3 @ 19200 baud slave=2
+MQTT:   v4dev.zedbee.in client=DEV_ZBDID02BA86068689
+Topics: sub=/BZHEZISEWY/device/ZBDID02BA86068689/cmds  pub=/BZHEZISEWY/device/ZBDID02BA86068689/msgs/Gateway/1/101
+Opening /dev/ttyS3 at 19200 bauds (N, 8, 1)
+[ALIVE] Program running | MQTT: DISCONNECTED | 2026-02-16 15:30:40
+[MQTT] Disconnected → trying to reconnect...
+[MQTT] Reconnect request queued
+[MQTT] Connected (session present: 0)
+
+
+Attempting to forward stored message
+
+open the temp file success *****************
+
+[MQTT] Subscribe sent → /BZHEZISEWY/device/ZBDID02BA86068689/cmds
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+Current MQTT publish interval: 300 seconds | MQTT: connected
+
+ *****main mqtt data publish ##### Publishing (interval 300 s):
+{"timestamp":"1771236040000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA86068689","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0458","vas":"1","v2s":"6","mod":"1","cfm":"0","ccf":"0","vnm":"550.0","vmn":"200.0","vmx":"300.0","dmx":"300.00","dmp":"0.0","st2":"27.60","amb":"614.40","pir":"0","ofs":"10.00","pfc":"0","sps":"99.0"}]}
+[Published] /BZHEZISEWY/device/ZBDID02BA86068689/msgs/Gateway/1/101
+***** PUBLISH SUCCESS *****
+[OFFLINE] Trying to forward stored messages...
+
+
+Attempting to forward stored message
+
+open the temp file success *****************
+
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+Current MQTT publish interval: 300 seconds | MQTT: connected
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+Current MQTT publish interval: 300 seconds | MQTT: connected
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+Current MQTT publish interval: 300 seconds | MQTT: connected
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+Current MQTT publish interval: 300 seconds | MQTT: connected
+
+
+
+
+zedbee@pine64:~/vav/vav_thermo$ 
+zedbee@pine64:~/vav/vav_thermo$ sudo ./vav_thermo 
+VAV Thermostat starting ...
+
+[STARTUP] Loaded publish interval: 300 seconds
+[POLICY] Long interval (300 s) → STORE failed messages + forward on reconnect
+Modbus: /dev/ttyS3 @ 19200 baud slave=2
+MQTT:   v4dev.zedbee.in client=DEV_ZBDID02BA86068689
+Topics: sub=/BZHEZISEWY/device/ZBDID02BA86068689/cmds  pub=/BZHEZISEWY/device/ZBDID02BA86068689/msgs/Gateway/1/101
+Opening /dev/ttyS3 at 19200 bauds (N, 8, 1)
+[ALIVE] Program running | MQTT: DISCONNECTED | 2026-02-16 15:34:45
+[MQTT] Disconnected → trying to reconnect...
+[MQTT] Reconnect request queued
+[MQTT] Connected (session present: 0)
+
+
+Attempting to forward stored message
+
+open the temp file success *****************
+
+[MQTT] Subscribe sent → /BZHEZISEWY/device/ZBDID02BA86068689/cmds
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+Current MQTT publish interval: 300 seconds | MQTT: connected
+
+ *****main mqtt data publish ##### Publishing (interval 300 s):
+{"timestamp":"1771236285000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA86068689","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0458","vas":"1","v2s":"6","mod":"1","cfm":"0","ccf":"0","vnm":"550.0","vmn":"200.0","vmx":"300.0","dmx":"300.00","dmp":"0.0","st2":"27.60","amb":"614.40","pir":"0","ofs":"10.00","pfc":"0","sps":"99.0"}]}
+[Published] /BZHEZISEWY/device/ZBDID02BA86068689/msgs/Gateway/1/101
+***** PUBLISH SUCCESS *****
+[OFFLINE] Trying to forward stored messages...
+
+
+Attempting to forward stored message
+
+open the temp file success *****************
+
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+Current MQTT publish interval: 300 seconds | MQTT: connected
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+Current MQTT publish interval: 300 seconds | MQTT: connected
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+Current MQTT publish interval: 300 seconds | MQTT: connected
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+Current MQTT publish interval: 300 seconds | MQTT: connected
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+Current MQTT publish interval: 300 seconds | MQTT: connected
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+Current MQTT publish interval: 300 seconds | MQTT: connected
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+Current MQTT publish interval: 300 seconds | MQTT: connected
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+Current MQTT publish interval: 300 seconds | MQTT: connected
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+Current MQTT publish interval: 300 seconds | MQTT: connected
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+Current MQTT publish interval: 300 seconds | MQTT: connected
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+Current MQTT publish interval: 300 seconds | MQTT: connected
+BMS cmds MQTT Received on topic /BZHEZISEWY/device/ZBDID02BA86068689/cmds: 14fdba15-c567-de83-c1a3-8e1c1d6dfb83,ZBEID0458,get
+[DEBUG] Parsed plain text: corr='14fdba15-c567-de83-c1a3-8e1c1d6dfb83' equip='ZBEID0458' cmd='get' param=''
+[CMD] corr_id='14fdba15-c567-de83-c1a3-8e1c1d6dfb83' equip='ZBEID0458' cmd='get' param=''
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Immediate Poll for GET ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+
+Immediate Publish for GET:
+{"timestamp":"1771236342000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA86068689","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0458","vas":"1","v2s":"6","mod":"1","cfm":"0","ccf":"0","vnm":"550.0","vmn":"200.0","vmx":"300.0","dmx":"300.00","dmp":"0.0","st2":"27.60","amb":"614.40","pir":"0","ofs":"10.00","pfc":"0","sps":"99.0"}]}
+[Published] /BZHEZISEWY/device/ZBDID02BA86068689/msgs/Gateway/1/101
+[GET] Immediate publish success
+[ACK queued] corr_id=14fdba15-c567-de83-c1a3-8e1c1d6dfb83 success=1 cmd=get reason=""
+[ACK sent] {"corr_id":"14fdba15-c567-de83-c1a3-8e1c1d6dfb83","ack":1,"reason":"","equipment_id":"ZBEID0458","command":"get"}
+[ALIVE] Program running | MQTT: connected | 2026-02-16 15:35:45
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %

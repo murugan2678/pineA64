@@ -1,0 +1,718 @@
+
+
+
+							Polling interval time in bms operating. commands and Acknowledge send 
+
+
+BMS Commands
+
+	BMS topic Commands
+	
+	    *	BMS cmds MQTT Received on topic /BZHEZISEWY/device/ZBDID02BA86068689/cmds: ae34da89-afa3-1ef0-71b0-c003f9c5b725,ZBEID0458,pollinginterval,5m
+
+
+	BMS Commands send data
+	
+	    *   ae34da89-afa3-1ef0-71b0-c003f9c5b725,ZBEID0458,pollinginterval,5m
+
+
+Acknowledge commands
+
+	Acknowledge topic commands
+	    
+	    *	BMS topic for Acknowledge  "/BZHEZISEWY/device/ZBDID02BA86068689/msgs/Gateway/1/103"
+	    
+	    
+	I send to response data Acknowledge send to BMS 
+	
+	    *   [ACK sent] {"corr_id":"ae34da89-afa3-1ef0-71b0-c003f9c5b725","ack":1,"reason":"","equipment_id":"ZBEID0458","command":"pollinginterval"}
+
+
+
+Current MQTT publish interval: 120 seconds | MQTT: connected
+BMS cmds MQTT Received on topic /BZHEZISEWY/device/ZBDID02BA86068689/cmds: ae34da89-afa3-1ef0-71b0-c003f9c5b725,ZBEID0458,pollinginterval,5m
+[DEBUG] Parsed plain text: corr='ae34da89-afa3-1ef0-71b0-c003f9c5b725' equip='ZBEID0458' cmd='pollinginterval' param='5m'
+[CMD] corr_id='ae34da89-afa3-1ef0-71b0-c003f9c5b725' equip='ZBEID0458' cmd='pollinginterval' param='5m'
+[POLICY] Long interval (300 s) → STORE failed messages + forward on reconnect
+[POLLING] Saved new interval: 300 seconds
+[POLLING] Publish interval changed to 300 seconds (5 m)
+[ACK queued] corr_id=ae34da89-afa3-1ef0-71b0-c003f9c5b725 success=1 cmd=pollinginterval reason=""
+[ACK sent] {"corr_id":"ae34da89-afa3-1ef0-71b0-c003f9c5b725","ack":1,"reason":"","equipment_id":"ZBEID0458","command":"pollinginterval"}
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+
+
+
+
+
+							get status immediately mqtt data send BMS. commands and Acknowledge send 
+
+BMS Commands
+
+	BMS topic Commands
+	
+	    *	BMS cmds MQTT Received on topic /BZHEZISEWY/device/ZBDID02BA86068689/cmds: 14fdba15-c567-de83-c1a3-8e1c1d6dfb83,ZBEID0458,get
+
+
+	BMS Commands send data
+	
+	    *   14fdba15-c567-de83-c1a3-8e1c1d6dfb83,ZBEID0458,get
+
+Acknowledge commands
+
+	Acknowledge topic commands
+	    
+	    *	BMS topic for Acknowledge  "/BZHEZISEWY/device/ZBDID02BA86068689/msgs/Gateway/1/103"
+	    
+	I send to response data Acknowledge send to BMS 
+	
+	    *   [ACK sent] {"corr_id":"14fdba15-c567-de83-c1a3-8e1c1d6dfb83","ack":1,"reason":"","equipment_id":"ZBEID0458","command":"get"}
+
+
+
+
+Current MQTT publish interval: 300 seconds | MQTT: connected
+BMS cmds MQTT Received on topic /BZHEZISEWY/device/ZBDID02BA86068689/cmds: 14fdba15-c567-de83-c1a3-8e1c1d6dfb83,ZBEID0458,get
+[DEBUG] Parsed plain text: corr='14fdba15-c567-de83-c1a3-8e1c1d6dfb83' equip='ZBEID0458' cmd='get' param=''
+[CMD] corr_id='14fdba15-c567-de83-c1a3-8e1c1d6dfb83' equip='ZBEID0458' cmd='get' param=''
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Immediate Poll for GET ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+ 
+ 
+ 
+ 
+ 
+
+Immediate Publish for GET:
+{"timestamp":"1771236342000","customerid":"ZBCID00012","tenantid":"ZBTID0001","deviceid":"ZBDID02BA86068689","datatype":"metadata","datamode":"monitoring","equipment":[{"id":"ZBEID0458","vas":"1","v2s":"6","mod":"1","cfm":"0","ccf":"0","vnm":"550.0","vmn":"200.0","vmx":"300.0","dmx":"300.00","dmp":"0.0","st2":"27.60","amb":"614.40","pir":"0","ofs":"10.00","pfc":"0","sps":"99.0"}]}
+[Published] /BZHEZISEWY/device/ZBDID02BA86068689/msgs/Gateway/1/101
+[GET] Immediate publish success
+[ACK queued] corr_id=14fdba15-c567-de83-c1a3-8e1c1d6dfb83 success=1 cmd=get reason=""
+[ACK sent] {"corr_id":"14fdba15-c567-de83-c1a3-8e1c1d6dfb83","ack":1,"reason":"","equipment_id":"ZBEID0458","command":"get"}
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+								This for VAV Thermostat commands Mqtt read and write
+							********************************************************************
+
+
+
+The VAV Thermostat register read and write which set to auto manual and manual that mode only read and write there to allow. 
+
+example ---> Set damper ---> when manual there means that time only exchange the value. Set Damper this register when auto manual set means not change for value
+ 
+
+
+1. 1st register fan mode -----> vas  on /off [0 = OFF, 1 = ON]  ======> auto manul
+
+2. 3rd register mode 	------> auto / manual [0 = Auto, 1 = Manual]  ======>  auto manual
+
+3. 11th register set temp ------>  set temp     ======>   auto manual
+
+4. 17th register set damp  ------>  set damper  ======> manual 
+
+
+
+1. Fan mode 1 = ON / 0 = OFF status read and write  this first 1 register read to write
+
+
+OFF = 1
+-------
+
+
+VAV Thermo stata live data modbus rtu in pine board hat board
+
+
+BMS Commands
+
+	BMS topic Commands
+	
+	    *	BMS cmds MQTT Received on topic /BZHEZISEWY/device/ZBDID02BA86068689/cmds: [{"corr_id":"795051eb-b153-c44d-17f4-c8908e234365","equipment_id":"ZBEID0458","vas":"0"}]
+	    
+	
+	BMS Commands send data
+	
+	    *	[{"corr_id":"795051eb-b153-c44d-17f4-c8908e234365","equipment_id":"ZBEID0458","vas":"0"}]
+		
+
+
+Acknowledge commands
+
+	Acknowledge topic commands
+	    
+	    *	BMS topic for Acknowledge  "/BZHEZISEWY/device/ZBDID02BA86068689/msgs/Gateway/1/103"
+
+	    
+	I send to response data Acknowledge send to BMS
+	
+	    *	[ACK sent] {"corr_id":"795051eb-b153-c44d-17f4-c8908e234365","ack":1,"reason":"","equipment_id":"ZBEID0458","command":"vas"}
+	    
+	    
+This for when BMS commands given that time this one come 
+
+
+
+Current MQTT publish interval: 300 seconds | MQTT: connected
+BMS cmds MQTT Received on topic /BZHEZISEWY/device/ZBDID02BA86068689/cmds: [{"corr_id":"795051eb-b153-c44d-17f4-c8908e234365","equipment_id":"ZBEID0458","vas":"0"}]
+[DEBUG] After parsing ids → corr_id='795051eb-b153-c44d-17f4-c8908e234365' equip='ZBEID0458'
+[DEBUG] Found key '"vas":' at pos, next char='"'
+[DEBUG] Quoted value: '0'
+[CMD] Parsed → cmd='vas' param='0'
+[CMD] corr_id='795051eb-b153-c44d-17f4-c8908e234365' equip='ZBEID0458' cmd='vas' param='0'
+VAS command → value = 0
+[02][06][00][01][00][00][D8][39]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><06><00><01><00><00><D8><39>
+Modbus VAS write OFF success
+[ACK queued] corr_id=795051eb-b153-c44d-17f4-c8908e234365 success=1 cmd=vas reason=""
+[ACK sent] {"corr_id":"795051eb-b153-c44d-17f4-c8908e234365","ack":1,"reason":"","equipment_id":"ZBEID0458","command":"vas"}
+
+
+
+
+This BMS commands give write to particular register live VAV Theremostat data to write. 
+
+
+
+Current MQTT publish interval: 300 seconds | MQTT: connected
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><00><00><05><00><00><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><00><FF><6D>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     0 | VAS (fan)			=====================================>   This 1st register for FAN ---> 1 = ON / 0 = OFF. now this for ---> 0 = OFF
+  2 |     5 |
+  3 |     0 | MOD (0=auto,1=man)	===> 0 = auto manual
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |   0.0 | SPS damper %
+
+
+
+
+
+
+VAV Thermo stata live data modbus rtu in pine board hat board
+
+
+
+1. Fan mode 1 = ON / 0 = OFF status read and write  this first 1 register read to write
+
+
+ON = 1
+-------
+
+
+
+BMS Commands
+
+	BMS topic Commands
+	
+	    *	BMS cmds MQTT Received on topic /BZHEZISEWY/device/ZBDID02BA86068689/cmds: [{"corr_id":"2449f055-144e-f606-6d9b-106a25624e80","equipment_id":"ZBEID0458","vas":"1"}]
+	    
+	
+	BMS Commands send data
+	
+	    *	[{"corr_id":"2449f055-144e-f606-6d9b-106a25624e80","equipment_id":"ZBEID0458","vas":"1"}]
+		
+
+
+Acknowledge commands
+
+	Acknowledge topic commands
+	    
+	    *	BMS topic for Acknowledge  "/BZHEZISEWY/device/ZBDID02BA86068689/msgs/Gateway/1/103"
+
+	    
+	I send to response data Acknowledge send to BMS
+	
+	    *	[ACK sent] {"corr_id":"2449f055-144e-f606-6d9b-106a25624e80","ack":1,"reason":"","equipment_id":"ZBEID0458","command":"vas"}
+	    
+	    
+
+	    
+This for when BMS commands given that time this one come 
+Current MQTT publish interval: 300 seconds | MQTT: connected
+BMS cmds MQTT Received on topic /BZHEZISEWY/device/ZBDID02BA86068689/cmds: [{"corr_id":"2449f055-144e-f606-6d9b-106a25624e80","equipment_id":"ZBEID0458","vas":"1"}]
+[DEBUG] After parsing ids → corr_id='2449f055-144e-f606-6d9b-106a25624e80' equip='ZBEID0458'
+[DEBUG] Found key '"vas":' at pos, next char='"'
+[DEBUG] Quoted value: '1'
+[CMD] Parsed → cmd='vas' param='1'
+[CMD] corr_id='2449f055-144e-f606-6d9b-106a25624e80' equip='ZBEID0458' cmd='vas' param='1'
+VAS command → value = 1
+[02][06][00][01][00][01][19][F9]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><06><00><01><00><01><19><F9>
+Modbus VAS write ON success
+[ACK queued] corr_id=2449f055-144e-f606-6d9b-106a25624e80 success=1 cmd=vas reason=""
+[ACK sent] {"corr_id":"2449f055-144e-f606-6d9b-106a25624e80","ack":1,"reason":"","equipment_id":"ZBEID0458","command":"vas"}
+
+
+
+
+This BMS commands give write to particular register live VAV Theremostat data to write. 
+
+
+
+Current MQTT publish interval: 300 seconds | MQTT: connected
+[ALIVE] Program running | MQTT: connected | 2026-02-16 15:03:08
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><00><E2><AD>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)			=====================================>   This 1st register for FAN ---> 1 = ON / 0 = OFF. now this for ---> 1 = ON
+  2 |     6 |
+  3 |     0 | MOD (0=auto,1=man)	===> 0 = auto manual
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |   0.0 | SPS damper %
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+2. 3rd register mode 	------> auto / manual [0 = Auto, 1 = Manual]  ======>  0 = Auto Manual
+
+
+2. Mode ON / OFF status read and write  this 3rd register read to write
+
+
+Auto Manual = 0
+---------------
+
+
+BMS Commands
+
+	BMS topic Commands
+	
+	    *	BMS cmds MQTT Received on topic /BZHEZISEWY/device/ZBDID02BA86068689/cmds: [{"corr_id":"852106a1-5888-a9ab-edf1-7cc2c2a2ae02","equipment_id":"ZBEID0458","mod":"0"}]
+	    
+	
+	BMS Commands send data
+	
+	    *	[{"corr_id":"852106a1-5888-a9ab-edf1-7cc2c2a2ae02","equipment_id":"ZBEID0458","mod":"0"}]
+		
+	
+
+Acknowledge commands
+
+	Acknowledge topic commands
+	    
+	    *	BMS topic for Acknowledge  "/BZHEZISEWY/device/ZBDID02BA86068689/msgs/Gateway/1/103"
+
+	    
+	I send to response data Acknowledge send to BMS
+	
+	    *	[ACK sent] {"corr_id":"852106a1-5888-a9ab-edf1-7cc2c2a2ae02","ack":1,"reason":"","equipment_id":"ZBEID0458","command":"mod"}
+
+
+
+
+This for when BMS commands given that time this one come 
+
+
+Current MQTT publish interval: 300 seconds | MQTT: connected
+BMS cmds MQTT Received on topic /BZHEZISEWY/device/ZBDID02BA86068689/cmds: [{"corr_id":"852106a1-5888-a9ab-edf1-7cc2c2a2ae02","equipment_id":"ZBEID0458","mod":"0"}]
+[DEBUG] After parsing ids → corr_id='852106a1-5888-a9ab-edf1-7cc2c2a2ae02' equip='ZBEID0458'
+[DEBUG] Found key '"mod":' at pos, next char='"'
+[DEBUG] Quoted value: '0'
+[CMD] Parsed → cmd='mod' param='0'
+[CMD] corr_id='852106a1-5888-a9ab-edf1-7cc2c2a2ae02' equip='ZBEID0458' cmd='mod' param='0'
+MOD command → value = 0
+[02][06][00][03][00][00][79][F9]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><06><00><03><00><00><79><F9>
+Modbus MOD write success
+[ACK queued] corr_id=852106a1-5888-a9ab-edf1-7cc2c2a2ae02 success=1 cmd=mod reason=""
+[ACK sent] {"corr_id":"852106a1-5888-a9ab-edf1-7cc2c2a2ae02","ack":1,"reason":"","equipment_id":"ZBEID0458","command":"mod"}
+
+
+
+
+This BMS commands give write to particular register live VAV Theremostat data to write. 
+
+
+
+Current MQTT publish interval: 300 seconds | MQTT: connected
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><00><00><05><00><00><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><00><FF><6D>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     0 | VAS (fan)			
+  2 |     5 |
+  3 |     0 | MOD (0=auto,1=man)	=====================================> This 3rd register for MODE ---> 0 = Auto / 1 = Manual. now this for ---> 0 = Auto Manual
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |   0.0 | SPS damper %
+ 
+
+
+
+2. 3rd register mode 	------> auto / manual [0 = Auto, 1 = Manual]  ======>  1 = Manual
+
+
+2. Mode ON / OFF status read and write  this 3rd register read to write
+
+Manual = 1
+----------
+
+
+BMS Commands
+
+	BMS topic Commands
+	
+	    *	BMS cmds MQTT Received on topic /BZHEZISEWY/device/ZBDID02BA86068689/cmds: [{"corr_id":"76ea10b7-44e3-ffa0-e15d-ccd1da9c43c5","equipment_id":"ZBEID0458","mod":"1"}]
+	    
+	
+	BMS Commands send data
+	
+	    *	[{"corr_id":"76ea10b7-44e3-ffa0-e15d-ccd1da9c43c5","equipment_id":"ZBEID0458","mod":"1"}]
+		
+	
+
+Acknowledge commands
+
+	Acknowledge topic commands
+	    
+	    *	BMS topic for Acknowledge  "/BZHEZISEWY/device/ZBDID02BA86068689/msgs/Gateway/1/103"
+
+	    
+	I send to response data Acknowledge send to BMS
+	
+	    *	[ACK sent] {"corr_id":"76ea10b7-44e3-ffa0-e15d-ccd1da9c43c5","ack":1,"reason":"","equipment_id":"ZBEID0458","command":"mod"}
+
+
+
+
+This for when BMS commands given that time this one come 
+
+Current MQTT publish interval: 300 seconds | MQTT: connected
+BMS cmds MQTT Received on topic /BZHEZISEWY/device/ZBDID02BA86068689/cmds: [{"corr_id":"76ea10b7-44e3-ffa0-e15d-ccd1da9c43c5","equipment_id":"ZBEID0458","mod":"1"}]
+[DEBUG] After parsing ids → corr_id='76ea10b7-44e3-ffa0-e15d-ccd1da9c43c5' equip='ZBEID0458'
+[DEBUG] Found key '"mod":' at pos, next char='"'
+[DEBUG] Quoted value: '1'
+[CMD] Parsed → cmd='mod' param='1'
+[CMD] corr_id='76ea10b7-44e3-ffa0-e15d-ccd1da9c43c5' equip='ZBEID0458' cmd='mod' param='1'
+MOD command → value = 1
+[02][06][00][03][00][01][B8][39]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><06><00><03><00><01><B8><39>
+Modbus MOD write success
+[ACK queued] corr_id=76ea10b7-44e3-ffa0-e15d-ccd1da9c43c5 success=1 cmd=mod reason=""
+[ACK sent] {"corr_id":"76ea10b7-44e3-ffa0-e15d-ccd1da9c43c5","ack":1,"reason":"","equipment_id":"ZBEID0458","command":"mod"}
+
+
+
+Current MQTT publish interval: 300 seconds | MQTT: connected
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><63><A2><84>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)		=====================================> This 3rd register for MODE ---> 0 = Auto / 1 = Manual. now this for ---> 1 = Manual
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  99.0 | SPS damper %
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+3. 11th register set temp ------>  set temp     ======>   auto manual
+
+
+3. Set Temperature status read and write  this  11th register to write value to change
+
+
+
+
+BMS Commands
+
+	BMS topic Commands
+	
+	    *	BMS cmds MQTT Received on topic /BZHEZISEWY/device/ZBDID02BA86068689/cmds: [{"corr_id":"ff4d7917-9ee7-70b3-f6b6-f242df950140","equipment_id":"ZBEID0458","st2":27.6}]
+	
+	
+	BMS Commands send data
+		
+	    *	[{"corr_id":"ff4d7917-9ee7-70b3-f6b6-f242df950140","equipment_id":"ZBEID0458","st2":27.6}]
+		
+	
+	
+Acknowledge commands
+
+	Acknowledge topic commands
+	    
+	    *	BMS topic for Acknowledge  "/BZHEZISEWY/device/ZBDID02BA86068689/msgs/Gateway/1/103"
+	    
+	    
+	I send to response data Acknowledge send to BMS
+	
+	    *	[ACK sent] {"corr_id":"ff4d7917-9ee7-70b3-f6b6-f242df950140","ack":1,"reason":"","equipment_id":"ZBEID0458","command":"st2"}
+
+
+This for when BMS commands given that time this one come 
+
+
+Current MQTT publish interval: 300 seconds | MQTT: connected
+BMS cmds MQTT Received on topic /BZHEZISEWY/device/ZBDID02BA86068689/cmds: [{"corr_id":"ff4d7917-9ee7-70b3-f6b6-f242df950140","equipment_id":"ZBEID0458","st2":27.6}]
+[DEBUG] After parsing ids → corr_id='ff4d7917-9ee7-70b3-f6b6-f242df950140' equip='ZBEID0458'
+[DEBUG] Found key '"st2":' at pos, next char='2'
+[DEBUG] Unquoted value: '27.6'
+[CMD] Parsed → cmd='st2' param='27.6'
+[CMD] corr_id='ff4d7917-9ee7-70b3-f6b6-f242df950140' equip='ZBEID0458' cmd='st2' param='27.6'
+ST2 command → temp = 27.60
+[02][06][00][0B][0A][C8][FF][0D]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><06><00><0B><0A><C8><FF><0D>
+Modbus ST2 write success (27.60 °C)
+[ACK queued] corr_id=ff4d7917-9ee7-70b3-f6b6-f242df950140 success=1 cmd=st2 reason=""
+[ACK sent] {"corr_id":"ff4d7917-9ee7-70b3-f6b6-f242df950140","ack":1,"reason":"","equipment_id":"ZBEID0458","command":"st2"}
+	
+
+
+
+This BMS commands give write to particular register live VAV Theremostat data to write. 
+
+
+Current MQTT publish interval: 300 seconds | MQTT: connected
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><00><00><05><00><00><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><00><FF><6D>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     0 | VAS (fan)			
+  2 |     5 |
+  3 |     0 | MOD (0=auto,1=man)	===> 0 = auto manual
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C		=====================================> This 11th register for Set Temperature --->  27.60°C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |   0.0 | SPS damper %
+ 
+ 
+
+ 
+
+ 
+ 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 
+ 4. 17th register set damp  ------>  set damper  ======> 1 = Manual 
+ 
+
+
+BMS Commands
+
+	BMS topic Commands
+	
+	    *	BMS cmds MQTT Received on topic /BZHEZISEWY/device/ZBDID02BA86068689/cmds: [{"corr_id":"eb537360-37b6-5e03-6acd-79e804ec8698","equipment_id":"ZBEID0458","sps":12}]
+	
+	
+	BMS Commands send data
+		
+	    *	[CMD] corr_id='eb537360-37b6-5e03-6acd-79e804ec8698' equip='ZBEID0458' cmd='sps' param='12'
+		
+	
+	
+Acknowledge commands
+
+	Acknowledge topic commands
+	    
+	    *	BMS topic for Acknowledge  "/BZHEZISEWY/device/ZBDID02BA86068689/msgs/Gateway/1/103"
+	    
+	    
+	I send to response data Acknowledge send to BMS
+	
+	    * 	[ACK sent] {"corr_id":"eb537360-37b6-5e03-6acd-79e804ec8698","ack":1,"reason":"","equipment_id":"ZBEID0458","command":"sps"}
+
+
+
+
+This for when BMS commands given that time this one come 
+
+
+Current MQTT publish interval: 300 seconds | MQTT: connected
+BMS cmds MQTT Received on topic /BZHEZISEWY/device/ZBDID02BA86068689/cmds: [{"corr_id":"eb537360-37b6-5e03-6acd-79e804ec8698","equipment_id":"ZBEID0458","sps":12}]
+[DEBUG] After parsing ids → corr_id='eb537360-37b6-5e03-6acd-79e804ec8698' equip='ZBEID0458'
+[DEBUG] Found key '"sps":' at pos, next char='1'
+[DEBUG] Unquoted value: '12'
+[CMD] Parsed → cmd='sps' param='12'
+[CMD] corr_id='eb537360-37b6-5e03-6acd-79e804ec8698' equip='ZBEID0458' cmd='sps' param='12'
+SPS command → percent = 12.0
+[02][06][00][11][00][0C][D9][F9]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><06><00><11><00><0C><D9><F9>
+Modbus SPS write success (12.0 %)
+[ACK queued] corr_id=eb537360-37b6-5e03-6acd-79e804ec8698 success=1 cmd=sps reason=""
+[ACK sent] {"corr_id":"eb537360-37b6-5e03-6acd-79e804ec8698","ack":1,"reason":"","equipment_id":"ZBEID0458","command":"sps"}
+
+
+
+This BMS commands give write to particular register live VAV Theremostat data to write. 
+
+
+Current MQTT publish interval: 300 seconds | MQTT: connected
+[02][03][00][00][00][12][C5][F4]
+Sending request using RTS signal
+RTS HIGH (TX)
+RTS LOW (RX)
+Waiting for a confirmation...
+<02><03><24><00><02><00><01><00><06><00><01><00><00><00><00><02><26><00><C8><01><2C><75><30><00><00><0A><C8><F0><00><00><00><03><E8><00><00><00><00><00><0C><E2><A8>
+
+--- Poll ---
+  0 |     2 | Device ID
+  1 |     1 | VAS (fan)			=====================================> vav fan 1 = ON
+  2 |     6 |
+  3 |     1 | MOD (0=auto,1=man)	===> 1 = manual
+  4 |     0 |
+  5 |     0 |
+  6 | 550.0 | Vnom
+  7 | 200.0 | Vmin
+  8 | 300.0 | Vmax
+  9 | 300.00 | DMX deltaP
+ 10 |     0 |
+ 11 | 27.60 | sT2 setpoint °C
+ 12 | 61440 |
+ 13 |     0 | PIR
+ 14 | 10.00 | OFS offset °C
+ 15 |     0 | PFC
+ 16 |     0 | dir (0=fwd)
+ 17 |  12.0 | SPS damper %		=====================================> This 17th register for Set Temperature --->  12.0
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 

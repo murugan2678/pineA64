@@ -1,0 +1,376 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <ctype.h>
+#include <pthread.h>
+#include <semaphore.h>
+#include <MQTTAsync.h>
+
+#include "mqtt.h"
+#include "config.h"
+#include "data.h"
+
+#define QOS             0
+#define BUF_SIZE        512
+#define MAX_PENDING_ACKS 32
+
+static MQTTAsync mqtt_client = NULL;
+static int mqtt_is_connected = 0;
+CommandContext cmd_ctx = {0};
+
+// ACK queue
+typedef struct {
+    char corr_id[128];
+    int success;
+    char reason[128];
+} PendingAck;
+
+static PendingAck ack_queue[MAX_PENDING_ACKS];
+static int ack_head = 0;
+static int ack_tail = 0;
+static pthread_mutex_t ack_mutex = PTHREAD_MUTEX_INITIALIZER;
+static sem_t ack_sem;
+static volatile int program_running = 1;
+
+// Forward declarations
+static void connlost(void *ctx, char *cause);
+static void onConnect(void *ctx, MQTTAsync_successData *response);
+static void onConnectFailure(void *ctx, MQTTAsync_failureData *response);
+static void onSubscribeFailure(void *context, MQTTAsync_failureData *response);
+static int messageArrived(void *context, char *topicName, int topicLen, MQTTAsync_message *message);
+static void *ack_sender_thread(void *arg);
+static void queue_ack(const char *corr_id, int success, const char *reason);
+
+// ────────────────────────────────────────────────
+// ACK sender thread
+// ────────────────────────────────────────────────
+static void *ack_sender_thread(void *arg) {
+    MQTTAsync *client = (MQTTAsync *)arg;
+
+    while (program_running) {
+        sem_wait(&ack_sem);
+        if (!program_running) break;
+
+        pthread_mutex_lock(&ack_mutex);
+        if (ack_head == ack_tail) {
+            pthread_mutex_unlock(&ack_mutex);
+            continue;
+        }
+
+        PendingAck item = ack_queue[ack_head];
+        ack_head = (ack_head + 1) % MAX_PENDING_ACKS;
+        pthread_mutex_unlock(&ack_mutex);
+
+        if (!mqtt_is_connected || !client) {
+            printf("[ACK] Skipped - not connected\n");
+            continue;
+        }
+
+        char ack[1024];
+        snprintf(ack, sizeof(ack),
+                 "{\"corr_id\":\"%s\",\"ack\":%d,\"reason\":\"%s\",\"device_id\":\"%s\"}",
+                 item.corr_id,
+                 item.success,
+                 item.reason,
+                 B_DEVICE_ID);
+
+        MQTTAsync_message msg = MQTTAsync_message_initializer;
+        msg.payload     = ack;
+        msg.payloadlen  = (int)strlen(ack);
+        msg.qos         = QOS;
+        msg.retained    = 0;
+
+        int rc = MQTTAsync_sendMessage(*client, BOODSKAP_ACK_TOPIC, &msg, NULL);
+        if (rc == MQTTASYNC_SUCCESS) {
+            printf("[ACK sent] → %s\n", ack);
+        } else {
+            printf("[ACK failed rc=%d] → %s\n", rc, ack);
+        }
+    }
+    printf("[ACK thread] exiting\n");
+    return NULL;
+}
+
+// ────────────────────────────────────────────────
+// Queue ACK from callback (safe)
+// ────────────────────────────────────────────────
+static void queue_ack(const char *corr_id, int success, const char *reason) {
+    pthread_mutex_lock(&ack_mutex);
+
+    int next = (ack_tail + 1) % MAX_PENDING_ACKS;
+    if (next == ack_head) {
+        printf("[ACK] Queue full → dropping corr_id=%s\n", corr_id ? corr_id : "?");
+        pthread_mutex_unlock(&ack_mutex);
+        return;
+    }
+
+    PendingAck *item = &ack_queue[ack_tail];
+    strncpy(item->corr_id, corr_id ? corr_id : "unknown", sizeof(item->corr_id)-1);
+    item->corr_id[sizeof(item->corr_id)-1] = '\0';
+    item->success = success;
+    strncpy(item->reason, reason ? reason : "", sizeof(item->reason)-1);
+    item->reason[sizeof(item->reason)-1] = '\0';
+
+    ack_tail = next;
+    sem_post(&ack_sem);
+
+    pthread_mutex_unlock(&ack_mutex);
+
+    printf("[ACK queued] corr_id=%s success=%d reason=\"%s\"\n",
+           corr_id ? corr_id : "?", success, reason ? reason : "");
+}
+
+// ────────────────────────────────────────────────
+// MQTT callbacks
+// ────────────────────────────────────────────────
+static void connlost(void *ctx, char *cause) {
+    (void)ctx;
+    printf("[MQTT] Connection lost: %s\n", cause ? cause : "unknown");
+    mqtt_is_connected = 0;
+}
+
+static void onConnect(void *ctx, MQTTAsync_successData *response) {
+    MQTTAsync *client = (MQTTAsync *)ctx;
+    printf("[MQTT] Connected OK (session present: %d)\n",
+           response ? response->alt.connect.sessionPresent : 0);
+    mqtt_is_connected = 1;
+
+    forward_stored_messages(client);
+
+    MQTTAsync_responseOptions opts = MQTTAsync_responseOptions_initializer;
+    opts.onFailure = onSubscribeFailure;
+    opts.context = client;
+
+    int rc = MQTTAsync_subscribe(*client, BOODSKAP_SUBSCRIBE_TOPIC, QOS, &opts);
+    if (rc == MQTTASYNC_SUCCESS) {
+        printf("[MQTT] Subscribe sent → %s\n", BOODSKAP_SUBSCRIBE_TOPIC);
+    } else {
+        printf("[MQTT] Subscribe failed immediately: %d\n", rc);
+    }
+}
+
+static void onConnectFailure(void *ctx, MQTTAsync_failureData *response) {
+    (void)ctx;
+    printf("[MQTT] Connect failed: %d\n", response ? response->code : -1);
+    mqtt_is_connected = 0;
+}
+
+static void onSubscribeFailure(void *context, MQTTAsync_failureData *response) {
+    (void)context;
+    printf("[MQTT] SUBSCRIBE FAILED code=%d msg=%s\n",
+           response ? response->code : -1,
+           response && response->message ? response->message : "unknown");
+}
+
+static int messageArrived(void *context, char *topicName, int topicLen, MQTTAsync_message *message) {
+    (void)context; (void)topicLen;
+
+    char payload[BUF_SIZE] = {0};
+    int len = message->payloadlen;
+    if (len >= sizeof(payload)) len = sizeof(payload) - 1;
+    memcpy(payload, message->payload, len);
+    payload[len] = '\0';
+
+    printf("BMS cmds MQTT Received on topic %s: %s\n", topicName, payload);
+
+    char corr_id[128] = "unknown";
+    char command[32]  = "";
+    char param[64]    = "";
+
+    // Extract corr_id
+    const char *p = strstr(payload, "\"corr_id\":\"");
+    if (p) {
+        p += 11;
+        sscanf(p, "%127[^\"]", corr_id);
+    }
+
+    // Command mapping
+    struct { const char *key; const char *name; int reg; } cmd_map[] = {
+        {"\"vas\":\"", "vas", 1},
+        {"\"mod\":\"", "mod", 3},
+        {"\"st2\":\"", "st2", 11},
+        {"\"sps\":\"", "sps", 16},
+        {NULL, NULL, 0}
+    };
+
+    int found = 0;
+    for (int i = 0; cmd_map[i].key; i++) {
+        const char *pos = strstr(payload, cmd_map[i].key);
+        if (pos) {
+            pos += strlen(cmd_map[i].key);
+            sscanf(pos, "%63[^\"]", param);
+            strcpy(command, cmd_map[i].name);
+            found = 1;
+            break;
+        }
+    }
+
+    if (!found) {
+        printf("[CMD] No supported command found\n");
+    }
+
+    // Normalize command case
+    for (char *c = command; *c; c++) *c = tolower((unsigned char)*c);
+
+    int success = 0;
+    char reason[128] = "unsupported command";
+
+    printf("[CMD] corr_id='%s' command='%s' param='%s'\n", corr_id, command, param);
+
+    if (strcmp(command, "vas") == 0) {
+        int value = atoi(param);
+        printf("VAS command → value = %d\n", value);
+        if (value == 0 || value == 1) {
+            // Optional: add retry logic here
+            /*
+            int retries = 3;
+            int rc = -1;
+            while (retries-- > 0 && rc == -1) {
+                rc = modbus_write_register(cmd_ctx.modbus_ctx, 1, (uint16_t)value);
+                if (rc == -1) usleep(150000);
+            }
+            */
+            int rc = modbus_write_register(cmd_ctx.modbus_ctx, 1, (uint16_t)value);
+            if (rc == -1) {
+                printf("modbus vas write failed\n");
+                snprintf(reason, sizeof(reason), "modbus write failed");
+            } else {
+                printf("Modbus VAS write %s success\n", value ? "ON" : "OFF");
+                success = 1;
+                reason[0] = '\0';
+            }
+        } else {
+            snprintf(reason, sizeof(reason), "invalid vas value (0 or 1 only)");
+        }
+    }
+    else if (strcmp(command, "mod") == 0) {
+        int value = atoi(param);
+        if (value == 0 || value == 1) {
+            int rc = modbus_write_register(cmd_ctx.modbus_ctx, 3, (uint16_t)value);
+            if (rc == -1) {
+                printf("modbus mod write failed\n");
+                snprintf(reason, sizeof(reason), "modbus write failed");
+            } else {
+                printf("Modbus MOD write success\n");
+                success = 1;
+                reason[0] = '\0';
+            }
+        } else {
+            snprintf(reason, sizeof(reason), "invalid mod value (0 or 1 only)");
+        }
+    }
+    else if (strcmp(command, "st2") == 0) {
+        float temp_c = atof(param);
+        uint16_t reg_value = (uint16_t)(temp_c * 100.0f + 0.5f);
+        int rc = modbus_write_register(cmd_ctx.modbus_ctx, 11, reg_value);
+        if (rc == -1) {
+            printf("modbus st2 write failed\n");
+            snprintf(reason, sizeof(reason), "modbus write failed");
+        } else {
+            printf("Modbus ST2 write success (%.2f °C)\n", temp_c);
+            success = 1;
+            reason[0] = '\0';
+        }
+    }
+    else if (strcmp(command, "sps") == 0) {
+        float percent = atof(param);
+        if (percent < 0 || percent > 100) {
+            snprintf(reason, sizeof(reason), "sps value must be 0–100");
+        } else {
+            uint16_t reg_value = (uint16_t)(percent * 10.0f + 0.5f);
+            int rc = modbus_write_register(cmd_ctx.modbus_ctx, 16, reg_value);
+            if (rc == -1) {
+                printf("modbus sps write failed\n");
+                snprintf(reason, sizeof(reason), "modbus write failed");
+            } else {
+                printf("Modbus SPS write success (%.1f %%)\n", percent);
+                success = 1;
+                reason[0] = '\0';
+            }
+        }
+    }
+
+    queue_ack(corr_id, success, reason);
+
+    MQTTAsync_freeMessage(&message);
+    MQTTAsync_free(topicName);
+    return 1;
+}
+
+// ────────────────────────────────────────────────
+// Public API
+// ────────────────────────────────────────────────
+void MQTT_Init(MQTTAsync *client) {
+    int rc = MQTTAsync_create(client, BOODSKAP_BROKER, CLIENTID, MQTTCLIENT_PERSISTENCE_NONE, NULL);
+    if (rc != MQTTASYNC_SUCCESS) {
+        fprintf(stderr, "[MQTT] create failed: %d\n", rc);
+        exit(1);
+    }
+    mqtt_client = *client;
+    MQTTAsync_setCallbacks(*client, NULL, connlost, messageArrived, NULL);
+}
+
+int8_t MQTT_Connect(MQTTAsync *client, const char *user, const char *pass) {
+    MQTTAsync_connectOptions opts = MQTTAsync_connectOptions_initializer;
+    opts.keepAliveInterval = 20;
+    opts.cleansession      = 1;
+    opts.onSuccess         = onConnect;
+    opts.onFailure         = onConnectFailure;
+    opts.context           = client;
+    opts.username          = user;
+    opts.password          = pass;
+
+    int rc = MQTTAsync_connect(*client, &opts);
+    if (rc != MQTTASYNC_SUCCESS) {
+        printf("[MQTT] connect failed immediately: %d\n", rc);
+        return -1;
+    }
+
+    // Start ACK sender thread
+    sem_init(&ack_sem, 0, 0);
+    pthread_t th;
+    pthread_create(&th, NULL, ack_sender_thread, client);
+    pthread_detach(th);
+
+    return 0;
+}
+
+void MQTT_Disconnect(MQTTAsync *client) {
+    program_running = 0;
+    sem_post(&ack_sem);  // wake thread to exit
+    MQTTAsync_disconnect(*client, NULL);
+}
+
+int8_t MQTT_Publish(MQTTAsync *client, const char *topic, const char *payload) {
+    if (!mqtt_is_connected) {
+        store_message(topic, payload);
+        return -1;
+    }
+
+    MQTTAsync_responseOptions opts = MQTTAsync_responseOptions_initializer;
+    MQTTAsync_message msg = MQTTAsync_message_initializer;
+    msg.payload    = (void *)payload;
+    msg.payloadlen = (int)strlen(payload);
+    msg.qos        = QOS;
+    msg.retained   = 0;
+
+    int rc = MQTTAsync_sendMessage(*client, topic, &msg, &opts);
+    if (rc != MQTTASYNC_SUCCESS) {
+        printf("[MQTT] Publish failed %d → storing offline\n", rc);
+        store_message(topic, payload);
+        return -1;
+    }
+    return 0;
+}
+
+void store_message(const char *topic, const char *payload) {
+    printf("[OFFLINE STORE] %s → %s\n", topic, payload);
+    // Add real storage if needed (file, queue, etc.)
+}
+
+void forward_stored_messages(MQTTAsync *client) {
+    (void)client;
+    printf("[OFFLINE] Forwarding stored messages (stub)\n");
+    // Add real forwarding logic if you have offline queue
+}
